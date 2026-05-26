@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almanya Eğitim ve Kariyer Danışmanlığı</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">Almanya Koçluk</div>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Menüyü Aç/Kapat">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hizmetler">Hizmetlerimiz</a></li>
+                <li><a href="#universiteler">Üniversiteler</a></li>
+                <li><a href="#hesaplayici">Not Hesaplama</a></li>
+                <li><a href="#iletisim" class="btn-nav">Ön Değerlendirme</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Almanya'da Üniversite Eğitimi ve Dil Okulu Danışmanlığı</h1>
+            <p>Eğitim durumunuzu ve dil seviyenizi paylaşın, Almanya'daki akademik geleceğinizi birlikte planlayalım.</p>
+            <a href="#iletisim" class="btn-main">Ücretsiz Ön Değerlendirme Formu</a>
+        </div>
+    </section>
+
+    <section class="services-section" id="hizmetler">
+        <div class="section-title">
+            <h2>Sizin İçin Neler Yapıyoruz?</h2>
+            <p>Almanya'daki eğitim hayatınızın ilk adımından kampüse adım atana kadar her süreçte yanınızdayız.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-box">
+                <div class="service-icon">🎓</div>
+                <h3>Üniversite Başvuru Danışmanlığı</h3>
+                <p>Akademik geçmişinize ve not ortalamanıza en uygun devlet üniversitelerinin belirlenmesi, başvuru evraklarının hazırlanması ve süreçlerin yönetimi.</p>
+            </div>
+            <div class="service-box">
+                <div class="service-icon">🗣️</div>
+                <h3>Dil Okulu ve Şartlı Kabul</h3>
+                <p>Almanca seviyenize uygun dil okullarının seçilmesi, kayıt işlemlerinin yapılması ve üniversitelerden şartlı kabul alınması.</p>
+            </div>
+            <div class="service-box">
+                <div class="service-icon">🛂</div>
+                <h3>Vize ve Bürokrasi Desteği</h3>
+                <p>Almanya öğrenci vizesi için gerekli evrak listesinin hazırlanması, bloke hesap açılış işlemleri ve konsolosluk mülakat hazırlığı.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="universities" id="universiteler">
+        <div class="section-title">
+            <h2>Almanya'nın Önde Gelen Devlet Üniversiteleri</h2>
+            <p>Yüksek akademik başarıya sahip prestijli eğitim kurumları</p>
+        </div>
+        <div class="uni-grid">
+            <div class="uni-card" data-id="tum">
+                <div class="uni-img" style="background-image: url('https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fwww.tum.de%2Ffileadmin%2F_processed_%2F7%2F4%2Fcsm_20180411_TUM_150_Jahre_TUM_Eingang_UB_-2047_klein_5cc1cf0509.jpg&sp=1779817874Td1f382f56853a295a6b25ad10521ccbd3e8c8f245493920f6cf243daa4ac8ea0');"></div>
+                <div class="uni-info">
+                    <h3>Münih Teknik Üniversitesi (TUM)</h3>
+                    <p class="uni-loc">📍 Münih, Bavyera</p>
+                    <p class="uni-desc">Mühendislik ve teknoloji alanında Avrupa'nın en iyi üniversitelerinden biridir. Giriş şartları oldukça rekabetçidir.</p>
+                    <div class="uni-meta"><span><strong>Eğitim Dili:</strong> Almanca / İngilizce</span></div>
+                </div>
+            </div>
+            <div class="uni-card" data-id="rwth">
+                <div class="uni-img" style="background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="uni-info">
+                    <h3>RWTH Aachen Üniversitesi</h3>
+                    <p class="uni-loc">📍 Aachen, Kuzey Ren-Vestfalya</p>
+                    <p class="uni-desc">Özellikle makine, otomotiv ve üretim mühendisliği alanlarında endüstri ile ortak projeler yürüten dev bir teknik okuldur.</p>
+                    <div class="uni-meta"><span><strong>Eğitim Dili:</strong> Ağırlıklı Almanca</span></div>
+                </div>
+            </div>
+            <div class="uni-card" data-id="heidelberg">
+                <div class="uni-img" style="background-image: url('https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="uni-info">
+                    <h3>Heidelberg Üniversitesi</h3>
+                    <p class="uni-loc">📍 Heidelberg, Baden-Württemberg</p>
+                    <p class="uni-desc">1386 yılında kurulan, Almanya'nın en eski üniversitesidir. Tıp, yaşam bilimleri ve sosyal bilimlerde küresel bir saygınlığa sahiptir.</p>
+                    <div class="uni-meta"><span><strong>Eğitim Dili:</strong> Almanca / İngilizce</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="calculator-section" id="hesaplayici">
+        <div class="section-title">
+            <h2>Alman Not Sistemi Dönüşümü</h2>
+            <p>Bavyera Formülü kullanarak güncel not ortalamanızın Almanya'daki karşılığını hesaplayın.</p>
+        </div>
+        <div class="calc-container">
+            <div class="calc-box">
+                <div class="form-group">
+                    <label for="gradeSystem">Not Sisteminiz</label>
+                    <select id="gradeSystem">
+                        <option value="4">4.00'lük Sistem (Üniversite / GPA)</option>
+                        <option value="100">100'lük Sistem (Lise OBP)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="studentGrade">Not Ortalamanız (P)</label>
+                    <input type="number" id="studentGrade" step="0.01" placeholder="Örn: 3.15 veya 82.5">
+                </div>
+                <button id="calcBtn" class="btn-main" style="width: 100%; border: none; cursor: pointer;">Hesapla</button>
+            </div>
+            <div class="result-box" id="resultBox">
+                <h3>Alman Notu Karşılığı:</h3>
+                <div class="result-value" id="germanGrade">-</div>
+                <p class="result-text" id="resultText">Notunuzu girip hesapla butonuna basın.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="iletisim">
+        <div class="section-title">
+            <h2>Eğitim Ön Değerlendirme Formu</h2>
+            <p>Bilgilerinizi eksiksiz doldurun, Almanya'daki eğitim uygunluğunuzu inceleyip size dönüş yapalım.</p>
+        </div>
+        <div class="form-container">
+            <form id="evaluationForm" name="Almanya-On-Degerlendirme" data-netlify="true" novalidate>
+                <input type="hidden" name="form-name" value="Almanya-On-Degerlendirme">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fullName">Adınız Soyadınız *</label>
+                        <input type="text" id="fullName" name="Ad Soyad" required placeholder="Ahmet Yılmaz">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-posta Adresiniz *</label>
+                        <input type="email" id="email" name="E-posta" required placeholder="ahmet@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon Numaranız (WhatsApp) *</label>
+                        <input type="tel" id="phone" name="Telefon" required placeholder="05xx xxx xx xx">
+                    </div>
+                    <div class="form-group">
+                        <label for="eduStatus">Güncel Eğitim Durumunuz *</label>
+                        <select id="eduStatus" name="Eğitim Durumu" required>
+                            <option value="">Seçiniz...</option>
+                            <option value="Lise Son Sınıf">Lise Son Sınıf Öğrencisi</option>
+                            <option value="Lise Mezunu">Lise Mezunu</option>
+                            <option value="Üniversite Öğrencisi">Üniversite Lisans Öğrencisi</option>
+                            <option value="Üniversite Mezunu">Üniversite Mezunu</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="langLevel">Mevcut Almanca Seviyeniz *</label>
+                        <select id="langLevel" name="Almanca Seviyesi" required>
+                            <option value="">Seçiniz...</option>
+                            <option value="Başlangıç (A1-A2)">Başlangıç (A1 - A2)</option>
+                            <option value="Orta Seviye (B1-B2)">Orta Seviye (B1 - B2)</option>
+                            <option value="İleri Seviye (C1)">İleri Seviye (C1 - TestDaF/Goethe)</option>
+                            <option value="Hiç Bilmiyor">Hiç Almanca Bilmiyorum</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="highSchoolGrade">Lise Mezuniyet Notu / OBP *</label>
+                        <input type="text" id="highSchoolGrade" name="Lise Diploma Notu" required placeholder="Örn: 85.40">
+                    </div>
+
+                    <div class="form-group" id="uniGradeGroup" style="display: none;">
+                        <label for="uniGrade">Üniversite Güncel Ortalaması (GPA) *</label>
+                        <input type="text" id="uniGrade" name="Üniversite Ortalaması" placeholder="Örn: 3.15">
+                    </div>
+                </div>
+                <button type="submit" class="btn-main" style="width: 100%; border: none; cursor: pointer; margin-top: 20px;">
+                    Başvuruyu Gönder
+                </button>
+            </form>
+            <div id="formSuccess" class="success-box" style="display: none;">
+                <div class="success-icon">✓</div>
+                <h3>Formunuz Başarıyla Alındı!</h3>
+                <p>Bilgileriniz incelenerek WhatsApp üzerinden en kısa sürede dönüş sağlanacaktır.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>Almanya Koçluk</h3>
+                <p>Almanya'da eğitim ve akademik kariyer yolculuğunuzda güvenilir rehberiniz.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Hızlı Menü</h4>
+                <ul>
+                    <li><a href="#hizmetler">Hizmetlerimiz</a></li>
+                    <li><a href="#universiteler">Üniversiteler</a></li>
+                    <li><a href="#hesaplayici">Not Hesaplama</a></li>
+                    <li><a href="#iletisim">Ön Değerlendirme</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Almanya Koçluk Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+    <div id="uniModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-slider">
+                <button class="slider-btn prev-btn">&lt;</button>
+                <img id="modalImg" src="" alt="Üniversite Görseli">
+                <button class="slider-btn next-btn">&gt;</button>
+            </div>
+            <h2 id="modalTitle">Üniversite Adı</h2>
+            <p id="modalLoc" class="modal-location">📍 Konum</p>
+            <hr>
+            <p id="modalDesc" class="modal-description">Detaylı Bilgi</p>
+            <div class="modal-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Kuruluş Yılı</span>
+                    <span id="modalYear" class="stat-value">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Öğrenci Sayısı</span>
+                    <span id="modalStudents" class="stat-value">-</span>
+                </div>
+            </div>
+            <a href="#" id="modalLink" target="_blank" class="btn-main">Resmî Web Sitesini Ziyaret Et</a>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
