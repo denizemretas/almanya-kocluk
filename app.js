@@ -46,56 +46,91 @@ const uniData = {
 // ==========================================
 // 2. MODAL VE SLIDER (GALERİ) MANTIĞI
 // ==========================================
-const cards = document.querySelectorAll('.uni-card');
+
 const modal = document.getElementById('uniModal');
 const closeBtn = document.querySelector('.close-btn');
-const modalTitle = document.getElementById('modalTitle');
-const modalLoc = document.getElementById('modalLoc');
-const modalDesc = document.getElementById('modalDesc');
-const modalYear = document.getElementById('modalYear');
-const modalStudents = document.getElementById('modalStudents');
-const modalLink = document.getElementById('modalLink');
-const modalImg = document.getElementById('modalImg');
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
+const bottomCloseBtn = document.getElementById('bottomCloseBtn');
 
-let activeImages = [];
-let currentImgIndex = 0;
+// Slider DOM Elemanları
+const sliderWrapper = document.getElementById('modalSliderWrapper');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
 
-cards.forEach(card => {
+let currentImages = []; 
+let currentSlideIndex = 0; 
+
+// Modalı Açma ve İçeriği Doldurma Fonksiyonu
+function openModal(uniId) {
+    const uni = uniData[uniId];
+    if (!uni) return;
+
+    // Metin içeriklerini bağlama
+    modal.querySelector('h2').textContent = uni.title;
+    modal.querySelector('.loc-text').textContent = uni.location;
+    modal.querySelector('.modal-desc').textContent = uni.desc;
+    modal.querySelector('.year-box h3').textContent = uni.year;
+    modal.querySelector('.student-box h3').textContent = uni.students;
+    modal.querySelector('#modalLink').setAttribute('href', uni.link);
+
+    // Slider resim havuzunu oluşturma
+    currentImages = uni.images; 
+    currentSlideIndex = 0; 
+    renderSlides(); 
+
+    modal.classList.add('open');
+}
+
+// Resim Odalarını (Div'leri) Dinamik Oluşturma Fonksiyonu
+function renderSlides() {
+    sliderWrapper.innerHTML = ''; // Eski resimleri temizle
+
+    currentImages.forEach((imgUrl, index) => {
+        const slideDiv = document.createElement('div');
+        slideDiv.classList.add('slider-slide');
+        slideDiv.style.backgroundImage = `url('${imgUrl}')`;
+        
+        // Sadece ilk resmi başlangıçta görünür yap
+        if (index === 0) {
+            slideDiv.classList.add('active');
+        }
+        
+        sliderWrapper.appendChild(slideDiv);
+    });
+}
+
+// Slayt Değiştirme Fonksiyonu (Sınıf Yönetimi)
+function changeSlide(direction) {
+    const slides = document.querySelectorAll('.slider-slide');
+    if (slides.length <= 1) return; 
+
+    // Mevcut görünür resmin etiketini kaldır
+    slides[currentSlideIndex].classList.remove('active');
+
+    // Yeni indeksi hesapla
+    currentSlideIndex = (currentSlideIndex + direction + currentImages.length) % currentImages.length;
+
+    // Yeni resme görünürlük etiketini ekle
+    slides[currentSlideIndex].classList.add('active');
+}
+
+// Olay Dinleyicileri (Event Listeners)
+document.querySelectorAll('.uni-card').forEach(card => {
     card.addEventListener('click', () => {
-        const id = card.getAttribute('data-id');
-        const data = uniData[id];
-        
-        modalTitle.innerText = data.title;
-        modalLoc.innerText = "📍 " + data.location;
-        modalDesc.innerText = data.desc;
-        modalYear.innerText = data.year;
-        modalStudents.innerText = data.students;
-        modalLink.href = data.link;
-        
-        activeImages = data.images;
-        currentImgIndex = 0;
-        modalImg.src = activeImages[currentImgIndex];
-        
-        modal.classList.add('open');
+        openModal(card.getAttribute('data-id'));
     });
 });
 
-nextBtn.addEventListener('click', () => {
-    currentImgIndex++;
-    if (currentImgIndex >= activeImages.length) currentImgIndex = 0;
-    modalImg.src = activeImages[currentImgIndex];
-});
+// Ok tetikleyicileri
+prevBtn.addEventListener('click', () => changeSlide(-1));
+nextBtn.addEventListener('click', () => changeSlide(1));
 
-prevBtn.addEventListener('click', () => {
-    currentImgIndex--;
-    if (currentImgIndex < 0) currentImgIndex = activeImages.length - 1;
-    modalImg.src = activeImages[currentImgIndex];
-});
+// Kapatma tetikleyicileri
+if (closeBtn) closeBtn.addEventListener('click', () => modal.classList.remove('open'));
+if (bottomCloseBtn) bottomCloseBtn.addEventListener('click', () => modal.classList.remove('open'));
 
-closeBtn.addEventListener('click', () => modal.classList.remove('open'));
-window.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
+window.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.remove('open');
+});
 
 // ==========================================
 // 3. NOT HESAPLAMA MANTIĞI (BAVYERA FORMÜLÜ)
@@ -278,5 +313,3 @@ if (menuToggle && navLinks) {
         });
     });
 }
-
-
