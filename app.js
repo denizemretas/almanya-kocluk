@@ -205,17 +205,19 @@ if (evaluationForm) {
         // Netlify altyapısı için verileri paketleme
         const formData = new FormData(evaluationForm);
 
-        // Doğrudan Netlify kök dizinine POST isteği atma
+        // Form verilerini Web3Forms API'sine gönderir
         fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             body: formData
         })
-        .then(response => {
-            if (response.ok) {
+        .then(async response => {
+            const result = await response.json();
+            // Sunucudan başarılı yanıt geldiyse
+            if (response.ok && result.success) {
                 evaluationForm.style.display = 'none';
                 formSuccess.style.display = 'block';
             } else {
-                alert("Form sunucuya iletilemedi. Lütfen tekrar deneyin.");
+                alert("Form iletilemedi: " + (result.message || "Lütfen API anahtarınızı kontrol edin."));
             }
         })
         .catch(error => {
