@@ -49,7 +49,6 @@ const uniData = {
 
 const modal = document.getElementById('uniModal');
 const closeBtn = document.querySelector('.close-btn');
-const bottomCloseBtn = document.getElementById('bottomCloseBtn');
 
 // Slider DOM Elemanları
 const sliderWrapper = document.getElementById('modalSliderWrapper');
@@ -126,7 +125,6 @@ nextBtn.addEventListener('click', () => changeSlide(1));
 
 // Kapatma tetikleyicileri
 if (closeBtn) closeBtn.addEventListener('click', () => modal.classList.remove('open'));
-if (bottomCloseBtn) bottomCloseBtn.addEventListener('click', () => modal.classList.remove('open'));
 
 window.addEventListener('click', (e) => {
     if (e.target === modal) modal.classList.remove('open');
