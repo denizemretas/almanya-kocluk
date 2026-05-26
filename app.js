@@ -11,8 +11,8 @@ const uniData = {
         link: "https://www.tum.de",
         images: [
             "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fwww.tum.de%2Ffileadmin%2F_processed_%2F7%2F4%2Fcsm_20180411_TUM_150_Jahre_TUM_Eingang_UB_-2047_klein_5cc1cf0509.jpg&sp=1779817874Td1f382f56853a295a6b25ad10521ccbd3e8c8f245493920f6cf243daa4ac8ea0",
-            "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80"
+            "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fwww.br.de%2Ffernsehen%2Fard-alpha%2Fsendungen%2Fcampus%2Ftu-muenchen-108~_v-img__16__9__xl_-d31c35f8186ebeb80b0cd843a7c267a0e0c81647.jpg%3Fversion%3D9bb09&sp=1779820214Ta44676b6df50d83623aa815066073556e1e2c84b940bf2301b0b87b363374dd4",
+            "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fwww.muenchen.travel%2Fvar%2Fger_muc%2Fstorage%2Fimages%2F_aliases%2Fstage_large%2F4%2F4%2F1%2F1%2F2181144-1-ger-DE%2Fmarienplatz-D-2687s-v1-foto-redline.jpg&sp=1779820263T0e314923b3785e3cfcc8fb0a61d038396bb8be03272b7b867d825a6f6b49688a"
         ]
     },
     rwth: {
@@ -23,9 +23,9 @@ const uniData = {
         students: "47,000+",
         link: "https://www.rwth-aachen.de",
         images: [
-            "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80"
+            "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fwww.academy.rwth-aachen.de%2Fassets%2Fimages%2F1%2F%25C2%25A9IA-super-c-2022-rwth-international-academy-01-a63aa9d4.jpg&sp=1779820295T2f8fc8043988df9c23fe65d62ef47068f8ffa9e40a53d5ba842be7c6436a8f07",
+            "https://www.startpage.com/av/proxy-image?piurl=http%3A%2F%2Fblog.michaelrasche.com%2Fwp-content%2Fuploads%2F2017%2F03%2FCARL_Aachen_1043-b.jpg&sp=1779820396T452fb4d3414be451f0e67e3d053e289469b1216ea320dbd23c4f88e411c0854a",
+            "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fimg.fotocommunity.com%2Faachener-dom-bei-nacht-im-winter-cba2e3d4-d332-40d1-afc1-294cd4e8ed12.jpg%3Fheight%3D1080&sp=1779820420T4f18cd5c61d68961cb5303e3c51b008af0a8a8a414dd689d6bcc154bb215ca0d"
         ]
     },
     heidelberg: {
@@ -36,9 +36,9 @@ const uniData = {
         students: "29,000+",
         link: "https://www.uni-heidelberg.de",
         images: [
-            "https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1595113316349-9fa4ee24f884?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1606761568499-6d2451b23c66?auto=format&fit=crop&w=800&q=80"
+            "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fwann-wurde.de%2Fwp-content%2Fuploads%2F2023%2F03%2FRuprecht-Karls-Universitaet-Heidelberg-hier-die-Unibibliothek-gilt-als-aelteste-Hochschule-in-Deutschland.-Foto-%25C2%25A9-eyetronic-stock-adobe-scaled.jpeg&sp=1779820478T119fcaf3eab958573b1e1c9f8864d3c0beb147bc4bcd22d85457954fba8b7cff",
+            "https://www.uni-heidelberg.de/md/zentral/alte_universitaet_460x280.jpg",
+            "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Felviajerofeliz.com%2Fwp-content%2Fuploads%2F2020%2F08%2FQue-ver-en-Heidelberg.jpg&sp=1779820592T088be5615322fdbfb74c83837b94a1a856f48b03404cb8b5394b48979873956f"
         ]
     }
 };
@@ -205,19 +205,17 @@ if (evaluationForm) {
         // Netlify altyapısı için verileri paketleme
         const formData = new FormData(evaluationForm);
 
-        // Form verilerini Web3Forms API'sine gönderir
+        // Doğrudan Netlify kök dizinine POST isteği atma
         fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             body: formData
         })
-        .then(async response => {
-            const result = await response.json();
-            // Sunucudan başarılı yanıt geldiyse
-            if (response.ok && result.success) {
+        .then(response => {
+            if (response.ok) {
                 evaluationForm.style.display = 'none';
                 formSuccess.style.display = 'block';
             } else {
-                alert("Form iletilemedi: " + (result.message || "Lütfen API anahtarınızı kontrol edin."));
+                alert("Form sunucuya iletilemedi. Lütfen tekrar deneyin.");
             }
         })
         .catch(error => {
