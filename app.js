@@ -206,7 +206,7 @@ if (evaluationForm) {
         const formData = new FormData(evaluationForm);
 
         // Doğrudan Netlify kök dizinine POST isteği atma
-        fetch('/', {
+        fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             body: formData
         })
