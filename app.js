@@ -265,7 +265,6 @@ if (eduStatusSelect && uniGradeGroup && uniGradeInput) {
         input.addEventListener('input', () => { if (input.value.trim()) input.classList.remove('error'); });
         input.addEventListener('change', () => { if (input.value) input.classList.remove('error'); });
     });
-}
 // ==========================================
 // MOBİL MENÜ (HAMBURGER) ETKİLEŞİM MANTIĞI
 // ==========================================
