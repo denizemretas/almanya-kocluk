@@ -964,3 +964,31 @@ body:has(#uniModal.open) #backtotop,
     pointer-events: none !important;
     transition: opacity 0.2s ease !important;
 }
+/* ==========================================
+   16. KART İÇERİKLERİNİ VE METADATALARI HİZALAMA
+   ========================================== */
+
+/* Kart yapısının dikeyde tamamen esnemesini sağlar */
+.uni-card {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Kart içerik alanının kalan boşluğu doldurmasını sağlar */
+.uni-info {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+}
+
+/* Açıklama alanına standart bir alt yükseklik tanıyarak hizayı eşitler */
+.uni-desc {
+    min-height: 75px !important; /* Yaklaşık 3 satırlık sabit bir alan açar */
+    margin-bottom: 15px !important;
+}
+
+/* Eğitim dili alanını her koşulda kartın en alt sınırına yaslar */
+.uni-meta {
+    margin-top: auto !important;
+    padding-top: 10px !important;
+}
