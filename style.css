@@ -1193,3 +1193,10 @@ body:has(#uniModal.open) #backtotop,
         max-height: 45px !important;
     }
 }
+/* Tüm sitenin sağa sola kaymasını kökten engeller */
+html, body {
+    width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
