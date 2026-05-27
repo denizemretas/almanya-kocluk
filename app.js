@@ -386,17 +386,24 @@ if (backToTopBtn) {
     });
 }
 // ==========================================
-// 5. YATAY GRİD KAYDIRMA FONKSİYONU (OKLAR İÇİN)
+// 5. YATAY GRİD KAYDIRMA FONKSİYONU (2 KART BİRDEN)
 // ==========================================
 function slideGrid(direction) {
     const grid = document.querySelector('.uni-grid');
     if (!grid) return;
 
-    // Grid'in o anki toplam genişliğini alıp kart sayısına bölerek dinamik adımı bulur
-    const scrollAmount = grid.clientWidth + 20; 
+    // Aktif ilk kartın genişliğini dinamik olarak ölçer
+    const firstCard = grid.querySelector('.uni-card');
+    if (!firstCard) return;
+
+    const cardWidth = firstCard.clientWidth; // Tek bir kartın pikselsel genişliği
+    const gap = 20; // CSS'te tanımladığımız kartlar arası boşluk (gap)
+
+    // Her tıkta tam olarak 2 kart ve onların boşlukları kadar kaydırma mesafesi hesaplar
+    const scrollAmount = (cardWidth + gap) * 2; 
     
     grid.scrollBy({
         left: direction * scrollAmount,
-        behavior: 'smooth'
+        behavior: 'smooth' // Akıcı animasyonlu geçiş
     });
 }
