@@ -1082,4 +1082,37 @@ body:has(#uniModal.open) #backtotop,
         display: none !important;
     }
 }
+/* ==========================================
+   18. BAŞLIK VE ALT BAŞLIK DÜZENLEMESİ
+   ========================================== */
 
+/* Ana başlık ve alt başlığı slider alanından bağımsız olarak container hizasına çeker */
+.uni-section .section-title,
+.uni-section .section-subtitle {
+    padding-left: 40px !important;
+    text-align: left !important;
+}
+
+.uni-section .section-title {
+    margin-top: 0 !important;
+    margin-bottom: 5px !important;
+    font-size: 28px !important;
+    color: #111827; /* Koyu şık bir ton */
+}
+
+.uni-section .section-subtitle {
+    margin-bottom: 25px !important;
+    color: #6B7280; /* Hafif gri ton */
+    font-size: 16px !important;
+}
+
+/* Mobil Ekran Uyumluluğu */
+@media (max-width: 768px) {
+    .uni-section .section-title,
+    .uni-section .section-subtitle {
+        padding-left: 15px !important;
+    }
+    .uni-section .section-title {
+        font-size: 22px !important;
+    }
+}
