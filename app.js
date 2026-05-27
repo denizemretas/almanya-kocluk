@@ -48,6 +48,10 @@ const uniData = {
         year: "1829",
         students: "22,000+",
         link: "https://www.uni-stuttgart.de",
+        images: [
+            "images/STU1.jpg",
+            "images/STU2.jpg",
+            "images/STU3.jpg",,
     }   
 };
 
