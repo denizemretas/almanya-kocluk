@@ -51,7 +51,8 @@ const uniData = {
         images: [
             "images/STU1.jpg",
             "images/STU2.jpg",
-            "images/STU3.jpg",,
+            "images/STU3.jpg"
+        ]
     }   
 };
 
