@@ -924,20 +924,21 @@ hr {
     border: none;
 }
 /* ==========================================
-   14. TÜM EKRANLARDA YATAY KAYDIRMA (HORIZONTAL SCROLL)
+   14. TÜM EKRANLARDA YATAY KAYDIRMA (GÜNCEL SÜRÜM)
    ========================================== */
 
-/* Üniversite kartlarını saran ana kutu (.uni-grid) */
+/* Ok butonları eklendiği için artık ana flex tetikleyicisi .uni-grid olmalı */
 .uni-grid { 
     display: flex !important;
-    flex-direction: row !important;
-    overflow-x: auto !important; /* Sağa-sola kaydırmayı aktif eder */
+    flex-direction: row !important; /* Kartları yan yana dizer */
+    overflow-x: auto !important; /* Yatay kaydırmayı aktif eder */
     scroll-snap-type: x mandatory; /* Kaydırırken kartların ekrana mıknatıs gibi tam oturmasını sağlar */
     gap: 20px !important;
-    padding: 15px 20px 30px 20px !important;
+    padding: 15px 5px 30px 5px !important;
+    width: 100% !important;
     
-    /* Modern tarayıcılarda alt taraftaki çirkin kaydırma çubuğunu gizler */
-    scrollbar-width: none; /* Firefox için */
+    /* Alt taraftaki kaydırma çubuğunu gizler */
+    scrollbar-width: none; /* Firefox */
 }
 
 /* Chrome, Safari ve Opera için alt kaydırma çubuğunu gizler */
@@ -945,21 +946,22 @@ hr {
     display: none; 
 }
 
-/* Kartların kendisi */
+/* Kartların kendisi (Ekranı kaplamasını önler ve genişliğini sabitler) */
 .uni-card {
-    flex: 0 0 320px !important; /* Kartların daralmasını önler, masaüstünde ideal genişlik sunar */
-    scroll-snap-align: start; /* Kart kaydırıldığında ekranın soluna yapışır */
-    margin-bottom: 0 !important; /* Eski dikey alt boşlukları sıfırlar */
+    flex: 0 0 320px !important; /* Kartların daralmasını veya büyümesini engeller, 320px yapar */
+    width: 320px !important;
+    scroll-snap-align: start; 
+    margin-bottom: 0 !important; 
 }
 
-/* Mobil Ekranlar İçin İnce Ayar (Opsiyonel) */
+/* Mobil Ekranlar İçin İnce Ayar */
 @media (max-width: 768px) {
     .uni-grid {
         gap: 16px !important;
-        padding: 10px 16px 20px 16px !important;
     }
     .uni-card {
-        flex: 0 0 290px !important; /* Mobil ekranlar için kartı biraz daha daraltır */
+        flex: 0 0 290px !important;
+        width: 290px !important;
     }
 }
 /* ==========================================
