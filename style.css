@@ -999,3 +999,61 @@ body:has(#uniModal.open) #backtotop,
     margin-top: auto !important;
     padding-top: 10px !important;
 }
+/* ==========================================
+   17. YATAY KAYDIRMA OK BUTONLARI (FADE EFEKTLİ)
+   ========================================== */
+
+/* Okları ve grid'i saran ana kutu */
+.slider-container {
+    position: relative; /* Okların buna göre hizalanması için */
+    width: 100%;
+}
+
+/* Ok butonlarının ortak stili */
+.slide-btn {
+    position: absolute;
+    top: 50%; /* Dikeyde ortala */
+    transform: translateY(-50%); /* Tam ortalama için */
+    width: 45px;
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.85); /* Hafif şeffaf beyaz */
+    border: 1px solid #ddd;
+    border-radius: 50%; /* Yuvarlak */
+    color: #333;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10; /* Kartların üstünde kalması için */
+    opacity: 0; /* Başlangıçta gizli */
+    transition: opacity 0.3s ease, background-color 0.2s; /* Fade efekti */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* slider-container'ın üzerine gelince okları göster */
+.slider-container:hover .slide-btn {
+    opacity: 1;
+}
+
+/* Okların üzerine gelince renk değişimi */
+.slide-btn:hover {
+    background-color: #f9f9f9;
+}
+
+/* Sol ok konumu */
+.prev-btn {
+    left: -15px; /* Grid'in biraz dışında dursun */
+}
+
+/* Sağ ok konumu */
+.next-btn {
+    right: -15px;
+}
+
+/* Mobilde okları gizle (Kullanıcı zaten parmakla kaydırıyor) */
+@media (max-width: 768px) {
+    .slide-btn {
+        display: none !important;
+    }
+}
