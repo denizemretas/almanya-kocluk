@@ -1,47 +1,64 @@
 /* ==========================================
-   14. TÜM EKRANLARDA YATAY KAYDIRMA (KESİN ÇÖZÜM)
+   BAĞIMSIZ YATAY DİZİLİM VE KENAR PAYLARI
    ========================================== */
 
-/* Slider container içindeki grid'i kesin olarak yan yana dizilmeye zorlar */
-.slider-container .uni-grid { 
-    display: flex !important;
-    flex-direction: row !important; /* Yan yana dizilimi kesinleştirir */
-    flex-wrap: nowrap !important; /* Kartların alt satıra geçmesini kesin olarak engeller */
-    overflow-x: auto !important; /* Yatay kaydırmayı açar */
-    scroll-snap-type: x mandatory !important;
-    gap: 20px !important;
-    padding: 15px 5px 30px 5px !important;
+/* Okların kartların üzerine taşmasını ve ana kutunun container dışına taşmasını engeller */
+.slider-container {
+    position: relative !important;
     width: 100% !important;
+    padding: 0 40px !important; /* Ok butonları için sağdan ve soldan güvenli alan bırakır */
     box-sizing: border-box !important;
-    scrollbar-width: none !important; /* Firefox kaydırma çubuğunu gizler */
 }
 
-/* Chrome, Safari ve Opera için alt kaydırma çubuğunu gizler */
-.slider-container .uni-grid::-webkit-scrollbar {
+/* Kartları barındıran şerit */
+.uni-grid { 
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 20px !important;
+    padding: 15px 0 30px 0 !important; /* Kartların alt gölgeleri kesilmesin diye alta pay verilir */
+    width: 100% !important;
+    box-sizing: border-box !important;
+    scrollbar-width: none !important;
+}
+
+.uni-grid::-webkit-scrollbar {
     display: none !important; 
 }
 
-/* Kartların yukarıdaki eski kodlar tarafından %100 genişliğe zorlanmasını engeller */
-.slider-container .uni-grid .uni-card {
-    flex: 0 0 320px !important; /* Kart büyümesini/küçülmesini engeller, 320px'e sabitler */
-    width: 320px !important; /* Genişliği kesinleştirir */
+/* Sabit kart boyutları */
+.uni-card {
+    flex: 0 0 320px !important;
+    width: 320px !important;
     max-width: 320px !important;
     scroll-snap-align: start !important; 
     margin-bottom: 0 !important;
-    margin-right: 0 !important;
     box-sizing: border-box !important;
 }
 
-/* Mobil Ekranlar İçin İnce Ayar */
+/* Ok Butonlarının Konum İnce Ayarı */
+.slide-btn {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+.prev-btn {
+    left: -5px !important; /* Sol kenardan içeride dengeler */
+}
+
+.next-btn {
+    right: -5px !important; /* Sağ kenardan içeride dengeler */
+}
+
 @media (max-width: 768px) {
-    .slider-container .uni-grid {
-        gap: 16px !important;
+    .slider-container {
+        padding: 0 15px !important; /* Mobilde kenar boşluklarını daraltır */
     }
-    .slider-container .uni-grid .uni-card {
-        flex: 0 0 290px !important;
-        width: 290px !important;
-        max-width: 290px !important;
-    }
+    .uni-grid { gap: 16px !important; }
+    .uni-card { flex: 0 0 290px !important; width: 290px !important; max-width: 290px !important; }
 }
 
 /* 1. Genel Sıfırlama ve Font Tanımlamaları */
