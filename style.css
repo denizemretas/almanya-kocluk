@@ -924,44 +924,48 @@ hr {
     border: none;
 }
 /* ==========================================
-   14. TÜM EKRANLARDA YATAY KAYDIRMA (GÜNCEL SÜRÜM)
+   14. TÜM EKRANLARDA YATAY KAYDIRMA (KESİN ÇÖZÜM)
    ========================================== */
 
-/* Ok butonları eklendiği için artık ana flex tetikleyicisi .uni-grid olmalı */
-.uni-grid { 
+/* Slider container içindeki grid'i kesin olarak yan yana dizilmeye zorlar */
+.slider-container .uni-grid { 
     display: flex !important;
-    flex-direction: row !important; /* Kartları yan yana dizer */
-    overflow-x: auto !important; /* Yatay kaydırmayı aktif eder */
-    scroll-snap-type: x mandatory; /* Kaydırırken kartların ekrana mıknatıs gibi tam oturmasını sağlar */
+    flex-direction: row !important; /* Yan yana dizilimi kesinleştirir */
+    flex-wrap: nowrap !important; /* Kartların alt satıra geçmesini kesin olarak engeller */
+    overflow-x: auto !important; /* Yatay kaydırmayı açar */
+    scroll-snap-type: x mandatory !important;
     gap: 20px !important;
     padding: 15px 5px 30px 5px !important;
     width: 100% !important;
-    
-    /* Alt taraftaki kaydırma çubuğunu gizler */
-    scrollbar-width: none; /* Firefox */
+    box-sizing: border-box !important;
+    scrollbar-width: none !important; /* Firefox kaydırma çubuğunu gizler */
 }
 
 /* Chrome, Safari ve Opera için alt kaydırma çubuğunu gizler */
-.uni-grid::-webkit-scrollbar {
-    display: none; 
+.slider-container .uni-grid::-webkit-scrollbar {
+    display: none !important; 
 }
 
-/* Kartların kendisi (Ekranı kaplamasını önler ve genişliğini sabitler) */
-.uni-card {
-    flex: 0 0 320px !important; /* Kartların daralmasını veya büyümesini engeller, 320px yapar */
-    width: 320px !important;
-    scroll-snap-align: start; 
-    margin-bottom: 0 !important; 
+/* Kartların yukarıdaki eski kodlar tarafından %100 genişliğe zorlanmasını engeller */
+.slider-container .uni-grid .uni-card {
+    flex: 0 0 320px !important; /* Kart büyümesini/küçülmesini engeller, 320px'e sabitler */
+    width: 320px !important; /* Genişliği kesinleştirir */
+    max-width: 320px !important;
+    scroll-snap-align: start !important; 
+    margin-bottom: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
 }
 
 /* Mobil Ekranlar İçin İnce Ayar */
 @media (max-width: 768px) {
-    .uni-grid {
+    .slider-container .uni-grid {
         gap: 16px !important;
     }
-    .uni-card {
+    .slider-container .uni-grid .uni-card {
         flex: 0 0 290px !important;
         width: 290px !important;
+        max-width: 290px !important;
     }
 }
 /* ==========================================
