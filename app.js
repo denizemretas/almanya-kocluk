@@ -392,10 +392,11 @@ function slideGrid(direction) {
     const grid = document.querySelector('.uni-grid');
     if (!grid) return;
 
-    const scrollAmount = 340; // Tek tıkta kaydırılacak piksel (Kart genişliği + gap)
+    // Grid'in o anki toplam genişliğini alıp kart sayısına bölerek dinamik adımı bulur
+    const scrollAmount = grid.clientWidth + 20; 
     
     grid.scrollBy({
         left: direction * scrollAmount,
-        behavior: 'smooth' // Akıcı kaydırma animasyonu
+        behavior: 'smooth'
     });
 }
