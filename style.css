@@ -1083,36 +1083,37 @@ body:has(#uniModal.open) #backtotop,
     }
 }
 /* ==========================================
-   18. BAŞLIK VE ALT BAŞLIK DÜZENLEMESİ
+   18. BAŞLIK VE ALT BAŞLIK DÜZENLEMESİ (ORTALANMIŞ)
    ========================================== */
 
-/* Ana başlık ve alt başlığı slider alanından bağımsız olarak container hizasına çeker */
+/* Ana başlık ve alt başlığı yatayda tamamen ortalar */
 .uni-section .section-title,
 .uni-section .section-subtitle {
-    padding-left: 40px !important;
-    text-align: left !important;
+    padding-left: 0 !important; /* Eski sol boşluğu sıfırlar */
+    text-align: center !important; /* Metni merkeze hizalar */
+    width: 100% !important;
 }
 
 .uni-section .section-title {
     margin-top: 0 !important;
-    margin-bottom: 5px !important;
+    margin-bottom: 8px !important;
     font-size: 28px !important;
-    color: #111827; /* Koyu şık bir ton */
+    color: #111827;
 }
 
 .uni-section .section-subtitle {
-    margin-bottom: 25px !important;
-    color: #6B7280; /* Hafif gri ton */
+    margin-bottom: 30px !important;
+    color: #6B7280;
     font-size: 16px !important;
 }
 
-/* Mobil Ekran Uyumluluğu */
+/* Mobil Ekranlar İçin Yazı Boyutu Ayarı */
 @media (max-width: 768px) {
-    .uni-section .section-title,
-    .uni-section .section-subtitle {
-        padding-left: 15px !important;
-    }
     .uni-section .section-title {
         font-size: 22px !important;
+    }
+    .uni-section .section-subtitle {
+        font-size: 14px !important;
+        padding: 0 15px !important; /* Mobilde çok uzun alt başlıkların kenara yapışmasını önler */
     }
 }
