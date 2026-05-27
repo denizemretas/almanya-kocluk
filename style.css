@@ -1,24 +1,26 @@
 /* ==========================================
-   BAĞIMSIZ YATAY DİZİLİM VE KENAR PAYLARI
+   YATAY DİZİLİM VE TAM SIĞDIRMA AYARLARI
    ========================================== */
 
-/* Okların kartların üzerine taşmasını ve ana kutunun container dışına taşmasını engeller */
 .slider-container {
     position: relative !important;
     width: 100% !important;
-    padding: 0 40px !important; /* Ok butonları için sağdan ve soldan güvenli alan bırakır */
+    padding: 0 40px !important; 
     box-sizing: border-box !important;
 }
 
-/* Kartları barındıran şerit */
 .uni-grid { 
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    gap: 20px !important;
-    padding: 15px 0 30px 0 !important; /* Kartların alt gölgeleri kesilmesin diye alta pay verilir */
+    
+    /* Kaydırırken kartın ekrana tak diye oturmasını sağlar */
+    scroll-snap-type: x mandatory !important; 
+    
+    /* Kartlar arasındaki boşluk */
+    gap: 20px !important; 
+    padding: 15px 0 30px 0 !important;
     width: 100% !important;
     box-sizing: border-box !important;
     scrollbar-width: none !important;
@@ -28,37 +30,42 @@
     display: none !important; 
 }
 
-/* Sabit kart boyutları */
+/* KART GENİŞLİĞİ HESAPLAMASI:
+   Masaüstünde ekranda tam olarak yan yana 4 adet kart gösterir.
+   Formül: (Kapsayıcı Genişliği - Toplam Boşluk Genişliği) / Kart Sayısı
+   calc((100% - (3 boşluk * 20px)) / 4)
+*/
 .uni-card {
-    flex: 0 0 320px !important;
-    width: 320px !important;
-    max-width: 320px !important;
+    flex: 0 0 calc((100% - 60px) / 4) !important; 
+    width: calc((100% - 60px) / 4) !important;
+    max-width: calc((100% - 60px) / 4) !important;
     scroll-snap-align: start !important; 
     margin-bottom: 0 !important;
     box-sizing: border-box !important;
 }
 
-/* Ok Butonlarının Konum İnce Ayarı */
-.slide-btn {
-    position: absolute !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
+/* Tablet Ekranlar İçin (Yan yana tam 3 kart sığdırır) */
+@media (max-width: 1024px) {
+    .uni-card {
+        flex: 0 0 calc((100% - 40px) / 3) !important;
+        width: calc((100% - 40px) / 3) !important;
+        max-width: calc((100% - 40px) / 3) !important;
+    }
 }
 
-.prev-btn {
-    left: -5px !important; /* Sol kenardan içeride dengeler */
-}
-
-.next-btn {
-    right: -5px !important; /* Sağ kenardan içeride dengeler */
-}
-
+/* Mobil Ekranlar İçin (Yan yana tam 1 kart sığdırır) */
 @media (max-width: 768px) {
     .slider-container {
-        padding: 0 15px !important; /* Mobilde kenar boşluklarını daraltır */
+        padding: 0 15px !important; 
     }
-    .uni-grid { gap: 16px !important; }
-    .uni-card { flex: 0 0 290px !important; width: 290px !important; max-width: 290px !important; }
+    .uni-grid { 
+        gap: 15px !important; 
+    }
+    .uni-card { 
+        flex: 0 0 100% !important; 
+        width: 100% !important; 
+        max-width: 100% !important; 
+    }
 }
 
 /* 1. Genel Sıfırlama ve Font Tanımlamaları */
