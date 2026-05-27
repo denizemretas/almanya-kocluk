@@ -53,7 +53,20 @@ const uniData = {
             "images/STU2.jpg",
             "images/STU3.jpg"
         ]
-    }   
+    },
+    berlin: {
+        title: "Berlin Teknik Üniversitesi (TU Berlin)",
+        location: "Berlin",
+        desc: "Almanya'nın en büyük ve prestijli teknik üniversitelerinden biridir. Mühendislik ve bilgisayar bilimleri alanlarında dünya çapında bir üne sahiptir.",
+        year: "1879",
+        students: "35,000+",
+        link: "https://www.tu.berlin",
+        images: [
+            "images/TUB1.jpg",
+            "images/TUB2.jpg",
+            "images/TUB3.jpg"
+        ]
+    }
 };
 
 // ==========================================
