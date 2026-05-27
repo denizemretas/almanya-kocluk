@@ -66,6 +66,51 @@ const uniData = {
             "images/TUB2.jpg",
             "images/TUB3.jpg"
         ]
+    },
+    braunschweig: {
+        title: "TU Braunschweig",
+        location: "Braunschweig, Aşağı Saksonya",
+        desc: "Almanya'nın en eski teknik üniversitesidir. Özellikle otomotiv mühendisliği, havacılık ve mobilite araştırmalarında lider konumdadır.",
+        year: "1745",
+        students: "16,800+",
+        link: "https://www.tu-braunschweig.de",
+        images: ["images/TUBR1.jpg", "images/TUBR2.jpg", "images/TUBR3.jpg"]
+    },
+    darmstadt: {
+        title: "TU Darmstadt",
+        location: "Darmstadt, Hessen",
+        desc: "Siber güvenlik, yapay zekâ ve elektrik-elektronik mühendisliğinde çok güçlüdür. Almanya'da bağımsız bir teknik üniversite olarak kurulan ilk kurumdur.",
+        year: "1877",
+        students: "25,000+",
+        link: "https://www.tu-darmstadt.de",
+        images: ["images/TUD1.jpg", "images/TUD2.jpg", "images/TUD3.jpg"]
+    },
+    dresden: {
+        title: "TU Dresden",
+        location: "Dresden, Saksonya",
+        desc: "Almanya'nın 'Mükemmeliyet Üniversitesi' unvanına sahip az sayıdaki teknik okulundan biridir. Mikroelektronik ve bilişim teknolojilerinde öncüdür.",
+        year: "1828",
+        students: "30,000+",
+        link: "https://tu-dresden.de",
+        images: ["images/TUDR1.jpg", "images/TUDR2.jpg", "images/TUDR3.jpg"]
+    },
+    leibniz: {
+        title: "Leibniz Universität Hannover",
+        location: "Hannover, Aşağı Saksonya",
+        desc: "Gottfried Wilhelm Leibniz'in adını taşıyan üniversite; kuantum optiği, üretim teknolojileri ve yer bilimleri alanındaki araştırmalarıyla tanınır.",
+        year: "1831",
+        students: "28,000+",
+        link: "https://www.uni-hannover.de",
+        images: ["images/LEI1.jpg", "images/LEI2.jpg", "images/LEI3.jpg"]
+    },
+    kit: {
+        title: "Karlsruhe Teknoloji Enstitüsü (KIT)",
+        location: "Karlsruhe, Baden-Württemberg",
+        desc: "Ulusal bir araştırma merkezi ile üniversitenin birleşimiyle kurulmuştur. Bilgisayar mühendisliği ve enerji teknolojilerinde Avrupa'nın en saygın kurumlarındandır.",
+        year: "2009",
+        students: "22,000+",
+        link: "https://www.kit.edu",
+        images: ["images/KIT1.jpg", "images/KIT2.jpg", "images/KIT3.jpg"]
     }
 };
 
