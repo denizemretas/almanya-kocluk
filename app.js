@@ -291,19 +291,18 @@ if (menuToggle && navLinks) {
 // ==========================================
 // 4. YUKARI ÇIK (SCROLL TO TOP) MANTIĞI
 // ==========================================
-// Tanımlamanın HTML'deki id ile birebir aynı harflerde olduğunu kontrol edin
-const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+const backToTopBtn = document.getElementById('backtotop');
 
-if (scrollToTopBtn) {
+if (backToTopBtn) {
     window.addEventListener('scroll', function() {
         if (window.scrollY > 400) {
-            scrollToTopBtn.classList.add('show');
+            backToTopBtn.classList.add('show');
         } else {
-            scrollToTopBtn.classList.remove('show');
+            backToTopBtn.classList.remove('show');
         }
     });
 
-    scrollToTopBtn.addEventListener('click', function() {
+    backToTopBtn.addEventListener('click', function() {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
