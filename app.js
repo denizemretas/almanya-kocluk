@@ -70,6 +70,12 @@ function openModal(uniId) {
     modal.querySelector('.student-box h3').textContent = uni.students;
     modal.querySelector('#modalLink').setAttribute('href', uni.link);
 
+    const modalMap = document.getElementById('modalMap');
+    if (modalMap) {
+        // Üniversite adına göre Google Maps canlı harita linkini üretir
+        modalMap.src = `https://maps.google.com/maps?q=${encodeURIComponent(uni.title)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
+    }
+
     // Slider resim havuzunu oluşturma
     currentImages = uni.images; 
     currentSlideIndex = 0; 
