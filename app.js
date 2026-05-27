@@ -44,9 +44,8 @@ const uniData = {
 };
 
 // ==========================================
-// 2. MODAL VE SLIDER (GALERİ) MANTIĞI
+// 2. MODAL VE YUMUŞAK SLIDER GEÇİŞLERİ
 // ==========================================
-
 const modal = document.getElementById('uniModal');
 const closeBtn = document.querySelector('.close-btn');
 
@@ -97,7 +96,7 @@ function renderSlides() {
     });
 }
 
-// Slayt Değiştirme Fonksiyonu (Sınıf Yönetimi)
+// Slayt Değiştirme Fonksiyonu
 function changeSlide(direction) {
     const slides = document.querySelectorAll('.slider-slide');
     if (slides.length <= 1) return; 
@@ -112,24 +111,75 @@ function changeSlide(direction) {
     slides[currentSlideIndex].classList.add('active');
 }
 
-// Olay Dinleyicileri (Event Listeners)
+// Olay Dinleyicileri (Kartlar ve Slider Okları)
 document.querySelectorAll('.uni-card').forEach(card => {
     card.addEventListener('click', () => {
         openModal(card.getAttribute('data-id'));
     });
 });
 
-// Ok tetikleyicileri
-prevBtn.addEventListener('click', () => changeSlide(-1));
-nextBtn.addEventListener('click', () => changeSlide(1));
+if (prevBtn) prevBtn.addEventListener('click', () => changeSlide(-1));
+if (nextBtn) nextBtn.addEventListener('click', () => changeSlide(1));
 
-// Kapatma tetikleyicileri
+// Modal Kapatma Olayları
 if (closeBtn) closeBtn.addEventListener('click', () => modal.classList.remove('open'));
 
 window.addEventListener('click', (e) => {
     if (e.target === modal) modal.classList.remove('open');
 });
 
+// ==========================================
+// 3. FORM GÖNDERİMİ VE ZAMAN KONTROLÜ
+// ==========================================
+const evaluationForm = document.getElementById('evaluationForm');
+
+if (evaluationForm) {
+    evaluationForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Sayfanın yenilenmesini engeller
+
+        const emailInput = document.getElementById('email') || evaluationForm.querySelector('input[type="email"]');
+        if (!emailInput) return;
+        
+        const emailValue = emailInput.value.trim().toLowerCase();
+        const lastSubmitTime = localStorage.getItem(`submit_time_${emailValue}`);
+        const currentTime = Date.now();
+        const cooldownPeriod = 10 * 60 * 1000; // 10 dakika
+
+        // Zaman kısıtlaması kontrolü
+        if (lastSubmitTime) {
+            const timePassed = currentTime - parseInt(lastSubmitTime);
+            if (timePassed < cooldownPeriod) {
+                const remainingMinutes = Math.ceil((cooldownPeriod - timePassed) / 60000);
+                alert(`Bu e-posta adresi ile zaten bir başvuru yaptınız. Lütfen yeni bir gönderim için ${remainingMinutes} dakika bekleyin.`);
+                return;
+            }
+        }
+
+        const formData = new FormData(evaluationForm);
+
+        // Web3Forms API'sine Gönderim
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        })
+        .then(async response => {
+            const result = await response.json();
+            if (response.ok && result.success) {
+                localStorage.setItem(`submit_time_${emailValue}`, Date.now());
+                
+                evaluationForm.style.display = 'none';
+                const formSuccess = document.getElementById('formSuccess');
+                if (formSuccess) formSuccess.style.display = 'block';
+            } else {
+                alert("Form iletilemedi: " + (result.message || "Lütfen tekrar deneyin."));
+            }
+        })
+        .catch(error => {
+            console.error("Hata:", error);
+            alert("Bağlantı hatası oluştu.");
+        });
+    });
+}
 // ==========================================
 // 3. NOT HESAPLAMA MANTIĞI (BAVYERA FORMÜLÜ)
 // ==========================================
@@ -185,60 +235,6 @@ if (calcBtn) {
     });
 }
 
-// ==========================================
-// FORM GÖNDERİMİ VE ZAMAN KONTROLÜ (HATASIZ BLOK)
-// ==========================================
-const evaluationForm = document.getElementById('evaluationForm');
-
-if (evaluationForm) {
-    evaluationForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // Sayfanın yenilenmesini kesin olarak engeller
-
-        // E-posta alanını kontrol et
-        const emailInput = document.getElementById('email') || evaluationForm.querySelector('input[type="email"]');
-        if (!emailInput) return;
-        
-        const emailValue = emailInput.value.trim().toLowerCase();
-        const lastSubmitTime = localStorage.getItem(`submit_time_${emailValue}`);
-        const currentTime = Date.now();
-        const cooldownPeriod = 10 * 60 * 1000; // 10 dakika
-
-        // 10 dakika kontrolü
-        if (lastSubmitTime) {
-            const timePassed = currentTime - parseInt(lastSubmitTime);
-            if (timePassed < cooldownPeriod) {
-                const remainingMinutes = Math.ceil((cooldownPeriod - timePassed) / 60000);
-                alert(`Bu e-posta adresi ile zaten bir başvuru yaptınız. Lütfen yeni bir gönderim için ${remainingMinutes} dakika bekleyin.`);
-                return;
-            }
-        }
-
-        const formData = new FormData(evaluationForm);
-
-        // Web3Forms API'sine Gönderim
-        fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            body: formData
-        })
-        .then(async response => {
-            const result = await response.json();
-            if (response.ok && result.success) {
-                localStorage.setItem(`submit_time_${emailValue}`, Date.now());
-                
-                // Formu gizle, başarı mesajını göster
-                evaluationForm.style.display = 'none';
-                const formSuccess = document.getElementById('formSuccess');
-                if (formSuccess) formSuccess.style.display = 'block';
-            } else {
-                alert("Form iletilemedi: " + (result.message || "Lütfen tekrar deneyin."));
-            }
-        })
-        .catch(error => {
-            console.error("Hata:", error);
-            alert("Bağlantı hatası oluştu.");
-        });
-    });
-}
 // ==========================================
 // DİNAMİK ALAN GÖSTERİMİ (KOŞULLU GÖRÜNÜRLÜK)
 // ==========================================
