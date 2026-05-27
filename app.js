@@ -40,7 +40,15 @@ const uniData = {
             "images/HEU2.jpg",
             "images/HEU3.jpg"
         ]
-    }
+    },
+    stuttgart: {
+        title: "Stuttgart Üniversitesi",
+        location: "Stuttgart, Baden-Württemberg",
+        desc: "Almanya'nın önde gelen teknik üniversitelerinden biridir. Makine mühendisliği, otomotiv, havacılık ve uzay teknolojileri ile bilgisayar bilimleri alanlarında güçlü bir akademik odağa sahiptir. Endüstri iş birlikleriyle desteklenen araştırma odaklı bir eğitim sunar.",
+        year: "1829",
+        students: "22,000+",
+        link: "https://www.uni-stuttgart.de",
+    }   
 };
 
 // ==========================================
