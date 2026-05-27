@@ -186,107 +186,59 @@ if (calcBtn) {
 }
 
 // ==========================================
-// 4. GELİŞMİŞ FORM KONTROLÜ VE NETLIFY GÖNDERİMİ
+// FORM GÖNDERİMİ VE ZAMAN KONTROLÜ (HATASIZ BLOK)
 // ==========================================
 const evaluationForm = document.getElementById('evaluationForm');
-const formSuccess = document.getElementById('formSuccess');
 
 if (evaluationForm) {
-    evaluationForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Sayfa yenilenmesini kesin olarak engeller
+    evaluationForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Sayfanın yenilenmesini kesin olarak engeller
 
-        const requiredInputs = evaluationForm.querySelectorAll('[required]');
-        let isFormValid = true;
+        // E-posta alanını kontrol et
+        const emailInput = document.getElementById('email') || evaluationForm.querySelector('input[type="email"]');
+        if (!emailInput) return;
+        
+        const emailValue = emailInput.value.trim().toLowerCase();
+        const lastSubmitTime = localStorage.getItem(`submit_time_${emailValue}`);
+        const currentTime = Date.now();
+        const cooldownPeriod = 10 * 60 * 1000; // 10 dakika
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const phoneRegex = /^(05|5)[0-9]{9}$/;
+        // 10 dakika kontrolü
+        if (lastSubmitTime) {
+            const timePassed = currentTime - parseInt(lastSubmitTime);
+            if (timePassed < cooldownPeriod) {
+                const remainingMinutes = Math.ceil((cooldownPeriod - timePassed) / 60000);
+                alert(`Bu e-posta adresi ile zaten bir başvuru yaptınız. Lütfen yeni bir gönderim için ${remainingMinutes} dakika bekleyin.`);
+                return;
+            }
+        }
 
-        const emailInput = document.getElementById('email');
-        const phoneInput = document.getElementById('phone');
-        const fileInput = document.getElementById('document');
+        const formData = new FormData(evaluationForm);
 
-        // Boşluk kontrolü
-        requiredInputs.forEach(input => {
-            if (!input.value.trim()) {
-                input.classList.add('error');
-                isFormValid = false;
+        // Web3Forms API'sine Gönderim
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        })
+        .then(async response => {
+            const result = await response.json();
+            if (response.ok && result.success) {
+                localStorage.setItem(`submit_time_${emailValue}`, Date.now());
+                
+                // Formu gizle, başarı mesajını göster
+                evaluationForm.style.display = 'none';
+                const formSuccess = document.getElementById('formSuccess');
+                if (formSuccess) formSuccess.style.display = 'block';
             } else {
-                input.classList.remove('error');
+                alert("Form iletilemedi: " + (result.message || "Lütfen tekrar deneyin."));
             }
+        })
+        .catch(error => {
+            console.error("Hata:", error);
+            alert("Bağlantı hatası oluştu.");
         });
-
-        // Email format kontrolü
-        if (emailInput && emailInput.value.trim() && !emailRegex.test(emailInput.value.trim())) {
-            alert("Lütfen geçerli bir e-posta adresi giriniz.");
-            emailInput.classList.add('error');
-            isFormValid = false;
-        }
-
-        // Telefon format kontrolü
-        if (phoneInput && phoneInput.value.trim()) {
-            const cleanedPhone = phoneInput.value.replace(/[\s()-]/g, "");
-            if (!phoneRegex.test(cleanedPhone)) {
-                alert("Lütfen geçerli bir telefon numarası giriniz.");
-                phoneInput.classList.add('error');
-                isFormValid = false;
-            }
-        }
-
-
-        if (!isFormValid) return; // Hata varsa burada kes
-
-        // Form gönderim olayı (Submit Event)
-        evaluationForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Sayfanın yenilenmesini engeller
-        
-            // 1. E-posta input alanını ve değerini alıyoruz
-            const emailInput = evaluationForm.querySelector('input[type="email"]') || document.getElementById('email');
-            if (!emailInput) return;
-            
-            const emailValue = emailInput.value.trim().toLowerCase();
-        
-            // 2. Zaman Kontrolü (10 Dakika Cooldown)
-            const lastSubmitTime = localStorage.getItem(`submit_time_${emailValue}`);
-            const currentTime = Date.now();
-            const cooldownPeriod = 10 * 60 * 1000; // Milisaniye cinsinden 10 dakika
-        
-            if (lastSubmitTime) {
-                const timePassed = currentTime - parseInt(lastSubmitTime);
-                
-                if (timePassed < cooldownPeriod) {
-                    const remainingMinutes = Math.ceil((cooldownPeriod - timePassed) / 60000);
-                    alert(`Bu e-posta adresi ile zaten bir başvuru yaptınız. Lütfen yeni bir gönderim için ${remainingMinutes} dakika bekleyin.`);
-                    return; // Kodun aşağıya devam etmesini ve formun gönderilmesini engeller
-                }
-            }
-        
-            // 3. Form verilerini hazırlama (Eğer süre sınırı aşılmışsa veya ilk gönderimse)
-            const formData = new FormData(evaluationForm);
-        
-            // 4. Web3Forms API'sine Gönderim
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-            })
-            .then(async response => {
-                const result = await response.json();
-                
-                if (response.ok && result.success) {
-                    // BAŞARILI GÖNDERİM: E-posta adresini ve şu anki zamanı hafızaya kaydet
-                    localStorage.setItem(`submit_time_${emailValue}`, Date.now());
-        
-                    evaluationForm.style.display = 'none';
-                    formSuccess.style.display = 'block';
-                } else {
-                    alert("Form iletilemedi: " + (result.message || "Lütfen tekrar deneyin."));
-                }
-            })
-            .catch(error => {
-                console.error("Hata:", error);
-                alert("Bağlantı hatası oluştu.");
-            });
-        });
-
+    });
+}
 // ==========================================
 // DİNAMİK ALAN GÖSTERİMİ (KOŞULLU GÖRÜNÜRLÜK)
 // ==========================================
