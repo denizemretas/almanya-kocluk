@@ -955,3 +955,12 @@ hr {
         margin-bottom: 0 !important; /* Eski dikey boşluğu sıfırlar */
     }
 }
+/* ==========================================
+   15. MODAL AÇIKKEN YUKARI ÇIK BUTONUNU GİZLE
+   ========================================== */
+body:has(#uniModal.open) #backtotop,
+#uniModal.open ~ #backtotop {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.2s ease !important;
+}
