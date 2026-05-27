@@ -1153,3 +1153,43 @@ body:has(#uniModal.open) #backtotop,
         height: 40px !important; /* Telefon ekranlarında menüye sığması için dikey boyutu */
     }
 }
+/* ==========================================
+   20. LOGO VE MENÜ ALANI ALAN GENİŞLETME
+   ========================================== */
+
+/* Navigasyon barının dikey alanını logoya göre esnetir */
+.navbar {
+    min-height: 80px !important; /* Barın yüksekliğini logonun sığabileceği seviyeye çeker */
+    padding: 10px 40px !important; /* Üst ve alttan pay bırakarak alanı genişletir */
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Logonun etrafındaki koruyucu bağımsız alanı büyütür */
+.logo-container {
+    height: 65px !important; /* Alan sınırını 65 piksele yükseltir */
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Logonun kendisini kesin olarak büyüklüğe zorlar */
+.logo-container .site-logo {
+    height: 100% !important; /* Yukarıda verilen 65px yüksekliğin tamamını kaplar */
+    width: auto !important;
+    max-height: 65px !important;
+    object-fit: contain !important;
+}
+
+/* Mobil Ekranlar İçin Dengeli Küçültme */
+@media (max-width: 768px) {
+    .navbar {
+        min-height: 60px !important;
+        padding: 10px 20px !important;
+    }
+    .logo-container {
+        height: 45px !important;
+    }
+    .logo-container .site-logo {
+        max-height: 45px !important;
+    }
+}
