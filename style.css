@@ -1125,30 +1125,31 @@ body:has(#uniModal.open) #backtotop,
     }
 }
 /* ==========================================
-   19. NAV LOGO DÜZENLEMESİ
+   19. NAV LOGO DÜZENLEMESİ (BOYUT AYARI)
    ========================================== */
 
-/* Navbar içindeki elemanları dikey eksende ortalar */
-.navbar {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-}
-
+/* Logonun etrafındaki link alanının daralmasını veya esnemesini engeller */
 .logo-container {
     display: flex !important;
     align-items: center !important;
     text-decoration: none !important;
+    flex-shrink: 0 !important; /* Logonun ezilip küçülmesini kesin olarak önler */
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
-.site-logo {
-    height: 55px !important; /* Logonun büyüklüğünü buradan dilediğiniz gibi ayarlayabilirsiniz */
-    width: auto !important;
+/* LOGO BOYUTUNU BURADAN AYARLAYABİLİRSİNİZ */
+.logo-container .site-logo {
+    height: 55px !important;  /* Logonun dikey yüksekliği (Büyütmek için 65px veya 70px yapabilirsiniz) */
+    width: auto !important;   /* Logonun oranının bozulmasını önler */
+    max-height: 100% !important;
     object-fit: contain !important;
+    display: block !important;
 }
 
+/* Mobil Ekranlar İçin Boyut Ayarı */
 @media (max-width: 768px) {
-    .site-logo {
-        height: 40px !important;
+    .logo-container .site-logo {
+        height: 40px !important; /* Telefon ekranlarında menüye sığması için dikey boyutu */
     }
 }
