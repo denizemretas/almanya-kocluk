@@ -62,18 +62,17 @@ function openModal(uniId) {
     const uni = uniData[uniId];
     if (!uni) return;
 
-    // Metin içeriklerini bağlama
+    // Metin içeriklerini bağlama (Location satırı kaldırıldı)
     modal.querySelector('h2').textContent = uni.title;
-    modal.querySelector('.loc-text').textContent = uni.location;
     modal.querySelector('.modal-desc').textContent = uni.desc;
     modal.querySelector('.year-box h3').textContent = uni.year;
     modal.querySelector('.student-box h3').textContent = uni.students;
     modal.querySelector('#modalLink').setAttribute('href', uni.link);
 
+    // DİNAMİK HARİTA KODU
     const modalMap = document.getElementById('modalMap');
     if (modalMap) {
-        // Üniversite adına göre Google Maps canlı harita linkini üretir
-        modalMap.src = `https://maps.google.com/maps?q=${encodeURIComponent(uni.title)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
+        modalMap.src = `https://maps.google.com/maps?q=${encodeURIComponent(uni.title)}&output=embed`;
     }
 
     // Slider resim havuzunu oluşturma
