@@ -1124,3 +1124,31 @@ body:has(#uniModal.open) #backtotop,
         padding: 0 15px !important; /* Mobilde çok uzun alt başlıkların kenara yapışmasını önler */
     }
 }
+/* ==========================================
+   19. NAV LOGO DÜZENLEMESİ
+   ========================================== */
+
+/* Navbar içindeki elemanları dikey eksende ortalar */
+.navbar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+.logo-container {
+    display: flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+}
+
+.site-logo {
+    height: 55px !important; /* Logonun büyüklüğünü buradan dilediğiniz gibi ayarlayabilirsiniz */
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+@media (max-width: 768px) {
+    .site-logo {
+        height: 40px !important;
+    }
+}
