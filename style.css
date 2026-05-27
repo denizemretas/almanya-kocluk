@@ -863,3 +863,39 @@ hr {
     color: #1F2937;
 }
 }
+/* ==========================================
+   12. YUKARI ÇIK (BACK TO TOP) BUTONU
+   ========================================== */
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background-color: #1F2937; /* Modern koyu gri tonu (Sarı tema renginizle de değiştirebilirsiniz) */
+    color: #FFFFFF;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    opacity: 0; /* Başlangıçta görünmez */
+    pointer-events: none; /* Gizliyken tıklanmayı engeller */
+    transition: opacity 0.3s ease, background-color 0.2s, transform 0.2s;
+    z-index: 999; /* Her şeyin üstünde kalması için */
+}
+
+/* Buton görünür olduğunda devreye girecek sınıf */
+#scrollToTopBtn.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Üzerine gelindiğinde hafif büyüme ve renk değişimi */
+#scrollToTopBtn:hover {
+    background-color: #4B5563;
+    transform: scale(1.05);
+}
