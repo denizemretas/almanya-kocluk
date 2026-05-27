@@ -898,3 +898,28 @@ hr {
     background-color: #4B5563 !important;
     transform: scale(1.05) !important;
 }
+/* ==========================================
+   13. MODAL BOŞLUK VE CANLI HARİTA TASARIMI
+   ========================================== */
+
+/* Bilgi yazısının altındaki boşluğu artırır */
+.modal-desc {
+    margin-bottom: 25px !important;
+    line-height: 1.6;
+}
+
+/* Harita çerçevesinin tasarımı */
+.modal-map {
+    width: 100%;
+    height: 180px; /* Haritanın dikey yüksekliği */
+    margin-bottom: 25px; /* Alttaki istatistiklerle arasındaki boşluk */
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #E5E7EB;
+}
+
+.modal-map iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
