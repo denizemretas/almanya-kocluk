@@ -64,12 +64,13 @@
         </div>
     </section>
 
-    <section class="universities" id="universiteler">
-        <div class="section-title">
-            <h2>Almanya'nın Önde Gelen Devlet Üniversiteleri</h2>
-            <p>Yüksek akademik başarıya sahip prestijli eğitim kurumları</p>
-        </div>
-        <div class="uni-grid">
+    <section id="universiteler" class="uni-section">
+    <div class="container">
+        <p class="section-subtitle">Yüksek akademik başarıya sahip prestijli eğitim kurumları</p>
+        
+        <div class="slider-container">
+            
+            <button class="slide-btn prev-btn" onclick="slideGrid(-1)">&#10094;</button>
             <div class="uni-card" data-id="tum">
                 <div class="uni-img" style="background-image: url('images/TUM1.jpg');"></div>
                 <div class="uni-info">
@@ -164,6 +165,7 @@
                     <div class="uni-meta"><span><strong>Eğitim Dili:</strong> Almanca / İngilizce</span></div>
                 </div>
             </div>
+            <button class="slide-btn next-btn" onclick="slideGrid(1)">&#10095;</button>
         </div>
     </section>
 
