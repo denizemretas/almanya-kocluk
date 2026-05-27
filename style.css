@@ -933,7 +933,7 @@ hr {
        ana div'in sınıf adı farklıysa (örneğin .uni-grid veya .cards-container), 
        aşağıdaki ".uni-container" ismini onunla değiştirin.
     */
-    .uni-container { 
+    .uni-grid { 
         display: flex !important;
         flex-direction: row !important;
         overflow-x: auto !important; /* Yatay kaydırmayı aktif eder */
@@ -944,7 +944,7 @@ hr {
     }
 
     /* Chrome, Safari ve Opera için alt kaydırma çubuğunu gizler */
-    .uni-container::-webkit-scrollbar {
+    .uni-grid::-webkit-scrollbar {
         display: none; 
     }
 
