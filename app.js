@@ -235,27 +235,57 @@ if (evaluationForm) {
 
         if (!isFormValid) return; // Hata varsa burada kes
 
-        // Netlify altyapısı için verileri paketleme
-        const formData = new FormData(evaluationForm);
+        // Form gönderim olayı (Submit Event)
+evaluationForm.addEventListener('submit', function(e) {
+    e.preventDefault(); // Sayfanın yenilenmesini engeller
 
-        // Doğrudan Netlify kök dizinine POST isteği atma
-        fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (response.ok) {
-                evaluationForm.style.display = 'none';
-                formSuccess.style.display = 'block';
-            } else {
-                alert("Form sunucuya iletilemedi. Lütfen tekrar deneyin.");
-            }
-        })
-        .catch(error => {
-            console.error("Hata:", error);
-            alert("Bağlantı hatası oluştu: " + error.message);
-        });
+    // 1. E-posta input alanını ve değerini alıyoruz
+    const emailInput = evaluationForm.querySelector('input[type="email"]') || document.getElementById('email');
+    if (!emailInput) return;
+    
+    const emailValue = emailInput.value.trim().toLowerCase();
+
+    // 2. Zaman Kontrolü (10 Dakika Cooldown)
+    const lastSubmitTime = localStorage.getItem(`submit_time_${emailValue}`);
+    const currentTime = Date.now();
+    const cooldownPeriod = 10 * 60 * 1000; // Milisaniye cinsinden 10 dakika
+
+    if (lastSubmitTime) {
+        const timePassed = currentTime - parseInt(lastSubmitTime);
+        
+        if (timePassed < cooldownPeriod) {
+            const remainingMinutes = Math.ceil((cooldownPeriod - timePassed) / 60000);
+            alert(`Bu e-posta adresi ile zaten bir başvuru yaptınız. Lütfen yeni bir gönderim için ${remainingMinutes} dakika bekleyin.`);
+            return; // Kodun aşağıya devam etmesini ve formun gönderilmesini engeller
+        }
+    }
+
+    // 3. Form verilerini hazırlama (Eğer süre sınırı aşılmışsa veya ilk gönderimse)
+    const formData = new FormData(evaluationForm);
+
+    // 4. Web3Forms API'sine Gönderim
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+    })
+    .then(async response => {
+        const result = await response.json();
+        
+        if (response.ok && result.success) {
+            // BAŞARILI GÖNDERİM: E-posta adresini ve şu anki zamanı hafızaya kaydet
+            localStorage.setItem(`submit_time_${emailValue}`, Date.now());
+
+            evaluationForm.style.display = 'none';
+            formSuccess.style.display = 'block';
+        } else {
+            alert("Form iletilemedi: " + (result.message || "Lütfen tekrar deneyin."));
+        }
+    })
+    .catch(error => {
+        console.error("Hata:", error);
+        alert("Bağlantı hatası oluştu.");
     });
+});
 
 // ==========================================
 // DİNAMİK ALAN GÖSTERİMİ (KOŞULLU GÖRÜNÜRLÜK)
