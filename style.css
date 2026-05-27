@@ -866,10 +866,10 @@ hr {
 /* ==========================================
    12. YUKARI ÇIK (BACK TO TOP) BUTONU
    ========================================== */
-#scrollToTopBtn {
-    position: fixed !important; /* Ekrana sabitlemeyi kesinleştirir */
+#backtotop {
+    position: fixed !important;
     bottom: 30px !important;
-    right: 30px !important; /* Butonu sağ tarafa alır */
+    right: 30px !important;
     width: 45px !important;
     height: 45px !important;
     background-color: #1F2937 !important;
@@ -882,19 +882,19 @@ hr {
     align-items: center !important;
     justify-content: center !important;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) !important;
-    opacity: 0; /* Başlangıçta gizler */
+    opacity: 0; /* Başlangıçta gizli */
     pointer-events: none;
     transition: opacity 0.3s ease, background-color 0.2s, transform 0.2s !important;
     z-index: 9999 !important;
 }
 
 /* Sayfa aşağı kaydırıldığında görünecek sınıf */
-#scrollToTopBtn.show {
-    opacity: 1;
-    pointer-events: auto;
+#backtotop.show {
+    opacity: 1 !important;
+    pointer-events: auto !important;
 }
 
-#scrollToTopBtn:hover {
+#backtotop:hover {
     background-color: #4B5563 !important;
     transform: scale(1.05) !important;
 }
