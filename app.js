@@ -288,3 +288,27 @@ if (menuToggle && navLinks) {
         });
     });
 }
+// ==========================================
+// YUKARI ÇIK (SCROLL TO TOP) MANTIĞI
+// ==========================================
+const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+if (scrollToTopBtn) {
+    // Sayfa aşağı kaydırıldıkça butonun görünürlüğünü kontrol et
+    window.addEventListener('scroll', function() {
+        // Kullanıcı aşağıya 400 pikselden fazla indiyse .show sınıfını ekle
+        if (window.scrollY > 400) {
+            scrollToTopBtn.classList.add('show');
+        } else {
+            scrollToTopBtn.classList.remove('show');
+        }
+    });
+
+    // Butona tıklandığında sayfayı yumuşakça yukarı kaydır
+    scrollToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Akıcı kaydırma animasyonu sağlar
+        });
+    });
+}
