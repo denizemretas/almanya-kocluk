@@ -923,3 +923,35 @@ hr {
     height: 100%;
     border: none;
 }
+/* ==========================================
+   14. MOBİL YATAY KAYDIRMA (HORIZONTAL SCROLL)
+   ========================================== */
+@media (max-width: 768px) {
+    
+    /* Kartların içinde bulunduğu ana kapsayıcı kutu.
+       Kritik Not: index.html dosyanızda ".uni-card" elemanlarını saran 
+       ana div'in sınıf adı farklıysa (örneğin .uni-grid veya .cards-container), 
+       aşağıdaki ".uni-container" ismini onunla değiştirin.
+    */
+    .uni-container { 
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important; /* Yatay kaydırmayı aktif eder */
+        scroll-snap-type: x mandatory; /* Kaydırırken kartların ekrana tam oturmasını sağlar */
+        gap: 16px !important;
+        padding: 10px 16px 20px 16px !important;
+        scrollbar-width: none; /* Firefox için alt kaydırma çubuğunu gizler */
+    }
+
+    /* Chrome, Safari ve Opera için alt kaydırma çubuğunu gizler */
+    .uni-container::-webkit-scrollbar {
+        display: none; 
+    }
+
+    /* Kartların mobildeki yeni düzeni */
+    .uni-card {
+        flex: 0 0 290px !important; /* Kartların daralmasını önler ve sabit bir genişlik sunar */
+        scroll-snap-align: start; /* Kart kaydırıldığında ekranın soluna mıknatıs gibi yapışır */
+        margin-bottom: 0 !important; /* Eski dikey boşluğu sıfırlar */
+    }
+}
