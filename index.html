@@ -318,7 +318,7 @@
                     </div>
                     <div class="form-group">
                         <label for="phone">Telefon Numaranız (WhatsApp) *</label>
-                        <input type="tel" id="phone" name="Telefon" required placeholder="05xx xxx xx xx">
+                        <input type="tel" id="phone" name="phone" required placeholder="05xx xxx xx xx" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                     </div>
                     <div class="form-group">
                         <label for="eduStatus">Güncel Eğitim Durumunuz *</label>
@@ -341,13 +341,13 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="highSchoolGrade">Lise Mezuniyet Notu / OBP *</label>
-                        <input type="text" id="highSchoolGrade" name="Lise Diploma Notu" required placeholder="Örn: 85.40">
+                        <label for="liseGrade">Lise Mezuniyet Notu / OBP *</label>
+                        <input type="number" id="liseGrade" name="lise_grade" required min="0" max="100" step="0.01" placeholder="Örn: 85.40">
                     </div>
 
                     <div class="form-group" id="uniGradeGroup" style="display: none;">
-                        <label for="uniGrade">Üniversite Güncel Ortalaması (GPA) *</label>
-                        <input type="text" id="uniGrade" name="Üniversite Ortalaması" placeholder="Örn: 3.15">
+                        <label for="uniGrade">Üniversite Not Ortalaması *</label>
+                        <input type="number" id="uniGrade" name="uni_grade" min="0" max="4" step="0.01" placeholder="Örn: 2.75">
                     </div>
                 </div>
                 <button type="submit" class="btn-main" style="width: 100%; border: none; cursor: pointer; margin-top: 20px;">
