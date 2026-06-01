@@ -1,5 +1,5 @@
 // ==========================================
-// 1. ÜNİVERSİTE VERİ HAVUZU
+// 1. ÜNİVERSİTE VERİ HAVUZU (OBJECT DATA)
 // ==========================================
 const uniData = {
     tum: {
@@ -9,11 +9,7 @@ const uniData = {
         year: "1868",
         students: "50,000+",
         link: "https://www.tum.de",
-        images: [
-            "images/TUM1.jpg",
-            "images/TUM2.jpg",
-            "images/TUM3.jpg"
-        ]
+        images: ["images/TUM1.jpg", "images/TUM2.jpg", "images/TUM3.jpg"]
     },
     rwth: {
         title: "RWTH Aachen Üniversitesi",
@@ -22,11 +18,7 @@ const uniData = {
         year: "1870",
         students: "47,000+",
         link: "https://www.rwth-aachen.de",
-        images: [
-            "images/RWTH1.jpg",
-            "images/RWTH2.jpg",
-            "images/RWTH3.jpg"
-        ]
+        images: ["images/RWTH1.jpg", "images/RWTH2.jpg", "images/RWTH3.jpg"]
     },
     heidelberg: {
         title: "Heidelberg Üniversitesi",
@@ -35,11 +27,7 @@ const uniData = {
         year: "1386",
         students: "29,000+",
         link: "https://www.uni-heidelberg.de",
-        images: [
-            "images/HEU1.jpg",
-            "images/HEU2.jpg",
-            "images/HEU3.jpg"
-        ]
+        images: ["images/HEU1.jpg", "images/HEU2.jpg", "images/HEU3.jpg"]
     },
     stuttgart: {
         title: "Stuttgart Üniversitesi",
@@ -48,11 +36,7 @@ const uniData = {
         year: "1829",
         students: "22,000+",
         link: "https://www.uni-stuttgart.de",
-        images: [
-            "images/STU1.jpg",
-            "images/STU2.jpg",
-            "images/STU3.jpg"
-        ]
+        images: ["images/STU1.jpg", "images/STU2.jpg", "images/STU3.jpg"]
     },
     berlin: {
         title: "Berlin Teknik Üniversitesi (TU Berlin)",
@@ -61,11 +45,7 @@ const uniData = {
         year: "1879",
         students: "35,000+",
         link: "https://www.tu.berlin",
-        images: [
-            "images/TUB1.jpg",
-            "images/TUB2.jpg",
-            "images/TUB3.jpg"
-        ]
+        images: ["images/TUB1.jpg", "images/TUB2.jpg", "images/TUB3.jpg"]
     },
     braunschweig: {
         title: "TU Braunschweig",
@@ -111,16 +91,66 @@ const uniData = {
         students: "22,000+",
         link: "https://www.kit.edu",
         images: ["images/KIT1.jpg", "images/KIT2.jpg", "images/KIT3.jpg"]
+    },
+    "tu-clausthal": {
+        title: "Clausthal Teknik Üniversitesi",
+        location: "Clausthal-Zellerfeld, Aşağı Saksonya",
+        desc: "Mühendislik, malzeme bilimi ve enerji araştırmalarında güçlü köklere sahiptir. Uluslararası öğrencilere sunduğu avantajlı şartlı kabul olanakları ve kendi bünyesindeki yoğun Almanca hazırlık kursları ile bilinir.",
+        year: "1775",
+        students: "4,000+",
+        link: "https://www.tu-clausthal.de",
+        images: ["images/tu-clausthal1.jpg", "images/tu-clausthal2.jpg", "images/tu-clausthal3.jpg"]
+    },
+    "uni-koeln": {
+        title: "Köln Üniversitesi",
+        location: "Köln, Kuzey Ren-Vestfalya",
+        desc: "Almanya'nın en eski ve en büyük üniversitelerinden biridir. Özellikle hukuk, yönetim, iktisat, psikoloji og sosyal bilimler alanlarında küresel çapta yüksek bir saygınlığa sahiptir.",
+        year: "1388",
+        students: "50,000+",
+        link: "https://www.uni-koeln.de",
+        images: ["images/uni-koeln1.jpg", "images/uni-koeln2.jpg", "images/uni-koeln3.jpg"]
+    },
+    "uni-frankfurt": {
+        title: "Frankfurt Goethe Üniversitesi",
+        location: "Frankfurt am Main, Hessen",
+        desc: "Avrupa'nın finans başkentinde yer alan üniversite ekonomi, felsefe ve siyaset biliminde öncüdür. Sosyal teorilerde bir döneme damga vuran ünlü 'Frankfurt Okulu' akımına ev sahipliği yapmıştır.",
+        year: "1914",
+        students: "45,000+",
+        link: "https://www.uni-frankfurt.de",
+        images: ["images/uni-frankfurt1.jpg", "images/uni-frankfurt2.jpg", "images/uni-frankfurt3.jpg"]
+    },
+    "uni-freiburg": {
+        title: "Freiburg Üniversitesi",
+        location: "Freiburg im Breisgau, Baden-Württemberg",
+        desc: "Felsefe, beşeri bilimler, teoloji ve tıp alanlarında köklü bir akademik mirasa sahiptir. Beş asrı aşan tarihi ve Kara Ormanlar'ın kıyısındaki büyüleyici konumu ile tam bir klasik Alman öğrenci şehridir.",
+        year: "1457",
+        students: "24,000+",
+        link: "https://www.uni-freiburg.de",
+        images: ["images/uni-freiburg1.jpg", "images/uni-freiburg2.jpg", "images/uni-freiburg3.jpg"]
+    },
+    "uni-paderborn": {
+        title: "Paderborn Üniversitesi",
+        location: "Paderborn, Kuzey Ren-Vestfalya",
+        desc: "Bilgisayar bilimleri, bilişim ve mühendislikte son derece aktiftir. Bünyesinde barındırdığı köklü dil hazırlık merkezi sayesinde, şartlı kabul ile Almanya'da dil eğitimi alıp lisansa başlamak isteyen öğrenciler için öncelikli tercihtir.",
+        year: "1972",
+        students: "20,000+",
+        link: "https://www.uni-paderborn.de",
+        images: ["images/uni-paderborn1.jpg", "images/uni-paderborn2.jpg", "images/uni-paderborn3.jpg"]
+    },
+    "uni-mannheim": {
+        title: "Mannheim Üniversitesi",
+        location: "Mannheim, Baden-Württemberg",
+        desc: "Büyük bir kısmı tarihi Mannheim Sarayı'nın içerisinde yer alan üniversite; işletme (BWL), ekonomi, siyaset bilimi ve sosyolojide Almanya'nın 1 numaralı ekolüdür. Akademik çevrelerde 'Almanya'nın Harvard'ı' olarak nitelendirilir.",
+        year: "1967",
+        students: "12,000+",
+        link: "https://www.uni-mannheim.de",
+        images: ["images/uni-mannheim1.jpg", "images/uni-mannheim2.jpg", "images/uni-mannheim3.jpg"]
     }
 };
 
-// ==========================================
-// 2. MODAL VE YUMUŞAK SLIDER GEÇİŞLERİ
-// ==========================================
+// Global Slayt Değişkenleri
 const modal = document.getElementById('uniModal');
 const closeBtn = document.querySelector('.close-btn');
-
-// Slider DOM Elemanları
 const sliderWrapper = document.getElementById('modalSliderWrapper');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
@@ -128,90 +158,94 @@ const nextBtn = document.getElementById('nextBtn');
 let currentImages = []; 
 let currentSlideIndex = 0; 
 
-// Modalı Açma ve İçeriği Doldurma Fonksiyonu
+// ==========================================
+// 2. DETAY PENCERESİ (MODAL) VE SLIDER ETKİLEŞİMİ
+// ==========================================
 function openModal(uniId) {
     const uni = uniData[uniId];
     if (!uni) return;
 
-    // Metin içeriklerini bağlama (Location satırı kaldırıldı)
-    modal.querySelector('h2').textContent = uni.title;
-    modal.querySelector('.modal-desc').textContent = uni.desc;
-    modal.querySelector('.year-box h3').textContent = uni.year;
-    modal.querySelector('.student-box h3').textContent = uni.students;
-    modal.querySelector('#modalLink').setAttribute('href', uni.link);
+    // Verileri arayüze basma
+    if (modal.querySelector('h2')) modal.querySelector('h2').textContent = uni.title;
+    if (modal.querySelector('.modal-desc')) modal.querySelector('.modal-desc').textContent = uni.desc;
+    
+    const yearBox = modal.querySelector('.year-box h3');
+    const studentBox = modal.querySelector('.student-box h3');
+    if (yearBox) yearBox.textContent = uni.year;
+    if (studentBox) studentBox.textContent = uni.students;
+    
+    const modalLink = document.getElementById('modalLink');
+    if (modalLink) modalLink.setAttribute('href', uni.link);
 
-    // DİNAMİK HARİTA KODU
+    // Dinamik Harita Yükleme (Düzeltildi)
     const modalMap = document.getElementById('modalMap');
     if (modalMap) {
-        modalMap.src = `https://maps.google.com/maps?q=${encodeURIComponent(uni.title)}&output=embed`;
+        modalMap.src = `https://maps.google.com/maps?q=${encodeURIComponent(uni.title + " " + uni.location)}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
     }
 
-    // Slider resim havuzunu oluşturma
-    currentImages = uni.images; 
+    // Resim havuzunu güncelleme ve çalıştırma
+    currentImages = uni.images || []; 
     currentSlideIndex = 0; 
     renderSlides(); 
 
     modal.classList.add('open');
+    document.body.style.overflow = 'hidden'; // Sayfa kaymasını dondurur
 }
 
-// Resim Odalarını (Div'leri) Dinamik Oluşturma Fonksiyonu
 function renderSlides() {
-    sliderWrapper.innerHTML = ''; // Eski resimleri temizle
+    if (!sliderWrapper) return;
+    sliderWrapper.innerHTML = ''; 
 
     currentImages.forEach((imgUrl, index) => {
         const slideDiv = document.createElement('div');
         slideDiv.classList.add('slider-slide');
         slideDiv.style.backgroundImage = `url('${imgUrl}')`;
         
-        // Sadece ilk resmi başlangıçta görünür yap
         if (index === 0) {
             slideDiv.classList.add('active');
         }
-        
         sliderWrapper.appendChild(slideDiv);
     });
 }
 
-// Slayt Değiştirme Fonksiyonu
 function changeSlide(direction) {
     const slides = document.querySelectorAll('.slider-slide');
     if (slides.length <= 1) return; 
 
-    // Mevcut görünür resmin etiketini kaldır
     slides[currentSlideIndex].classList.remove('active');
-
-    // Yeni indeksi hesapla
     currentSlideIndex = (currentSlideIndex + direction + currentImages.length) % currentImages.length;
-
-    // Yeni resme görünürlük etiketini ekle
     slides[currentSlideIndex].classList.add('active');
 }
 
-// Olay Dinleyicileri (Kartlar ve Slider Okları)
+// Olay Dinleyicileri Kurulumu
 document.querySelectorAll('.uni-card').forEach(card => {
     card.addEventListener('click', () => {
-        openModal(card.getAttribute('data-id'));
+        const uniId = card.getAttribute('data-id');
+        if (uniId) openModal(uniId);
     });
 });
 
 if (prevBtn) prevBtn.addEventListener('click', () => changeSlide(-1));
 if (nextBtn) nextBtn.addEventListener('click', () => changeSlide(1));
 
-// Modal Kapatma Olayları
-if (closeBtn) closeBtn.addEventListener('click', () => modal.classList.remove('open'));
+function closeModal() {
+    if (modal) modal.classList.remove('open');
+    document.body.style.overflow = ''; // Kaymayı normale döndürür
+    const modalMap = document.getElementById('modalMap');
+    if (modalMap) modalMap.src = ''; // Harita sesini/işlemini durdurur
+}
 
-window.addEventListener('click', (e) => {
-    if (e.target === modal) modal.classList.remove('open');
-});
+if (closeBtn) closeBtn.addEventListener('click', closeModal);
+window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
 // ==========================================
-// 3. FORM GÖNDERİMİ VE ZAMAN KONTROLÜ
+// 3. FORM GÖNDERİMİ VE SOĞUMA SÜRESİ (COOLDOWN)
 // ==========================================
 const evaluationForm = document.getElementById('evaluationForm');
 
 if (evaluationForm) {
     evaluationForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // Sayfanın yenilenmesini engeller
+        e.preventDefault(); 
 
         const emailInput = document.getElementById('email') || evaluationForm.querySelector('input[type="email"]');
         if (!emailInput) return;
@@ -219,9 +253,8 @@ if (evaluationForm) {
         const emailValue = emailInput.value.trim().toLowerCase();
         const lastSubmitTime = localStorage.getItem(`submit_time_${emailValue}`);
         const currentTime = Date.now();
-        const cooldownPeriod = 10 * 60 * 1000; // 10 dakika
+        const cooldownPeriod = 10 * 60 * 1000; 
 
-        // Zaman kısıtlaması kontrolü
         if (lastSubmitTime) {
             const timePassed = currentTime - parseInt(lastSubmitTime);
             if (timePassed < cooldownPeriod) {
@@ -233,7 +266,6 @@ if (evaluationForm) {
 
         const formData = new FormData(evaluationForm);
 
-        // Web3Forms API'sine Gönderim
         fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             body: formData
@@ -242,7 +274,6 @@ if (evaluationForm) {
             const result = await response.json();
             if (response.ok && result.success) {
                 localStorage.setItem(`submit_time_${emailValue}`, Date.now());
-                
                 evaluationForm.style.display = 'none';
                 const formSuccess = document.getElementById('formSuccess');
                 if (formSuccess) formSuccess.style.display = 'block';
@@ -255,9 +286,16 @@ if (evaluationForm) {
             alert("Bağlantı hatası oluştu.");
         });
     });
+
+    // Anlık hata temizleme mekanizması
+    evaluationForm.querySelectorAll('[required]').forEach(input => {
+        input.addEventListener('input', () => { if (input.value.trim()) input.classList.remove('error'); });
+        input.addEventListener('change', () => { if (input.value) input.classList.remove('error'); });
+    });
 }
+
 // ==========================================
-// 3. NOT HESAPLAMA MANTIĞI (BAVYERA FORMÜLÜ)
+// 4. NOT HESAPLAMA MANTIĞI (BAVYERA FORMÜLÜ)
 // ==========================================
 const gradeSystem = document.getElementById('gradeSystem');
 const studentGradeInput = document.getElementById('studentGrade');
@@ -281,94 +319,79 @@ if (calcBtn) {
             pMax = 4.0; pMin = 2.0;
             if (grade > 4.0) { alert("Notunuz 4.00'ten büyük olamaz."); return; }
             if (grade < 2.0) {
-                germanGradeDisplay.innerText = "4.0+";
-                resultTextDisplay.innerText = "Girdiğiniz not minimum geçme sınırının altında kaldığı için Alman sisteminde başarısız kabul edilir.";
+                if (germanGradeDisplay) germanGradeDisplay.innerText = "4.0+";
+                if (resultTextDisplay) resultTextDisplay.innerText = "Girdiğiniz not minimum geçme sınırının altında kaldığı için Alman sisteminde başarısız kabul edilir.";
                 return;
             }
         } else if (system === "100") {
             pMax = 100; pMin = 50;
             if (grade > 100) { alert("Notunuz 100'den büyük olamaz."); return; }
             if (grade < 50) {
-                germanGradeDisplay.innerText = "4.0+";
-                resultTextDisplay.innerText = "Girdiğiniz not lise mezuniyet barajının altında kaldığı için Alman sisteminde başarısız kabul edilir.";
+                if (germanGradeDisplay) germanGradeDisplay.innerText = "4.0+";
+                if (resultTextDisplay) resultTextDisplay.innerText = "Girdiğiniz not lise mezuniyet barajının altında kaldığı için Alman sisteminde başarısız kabul edilir.";
                 return;
             }
         }
 
         let germanGrade = 1 + 3 * ((pMax - grade) / (pMax - pMin));
         germanGrade = germanGrade.toFixed(1);
-        germanGradeDisplay.innerText = germanGrade;
+        if (germanGradeDisplay) germanGradeDisplay.innerText = germanGrade;
 
-        if (germanGrade >= 1.0 && germanGrade <= 1.5) {
-            resultTextDisplay.innerText = "Harika bir not! Almanya'daki prestijli teknik üniversitelerden kabul alma şansınız yüksek.";
-        } else if (germanGrade > 1.5 && germanGrade <= 2.5) {
-            resultTextDisplay.innerText = "İyi bir derece. Birçok Alman devlet üniversitesinin kabul şartlarını karşılıyorsunuz.";
-        } else if (germanGrade > 2.5 && germanGrade <= 3.5) {
-            resultTextDisplay.innerText = "Orta düzey bir not. Şartlı kabul sunan üniversiteler üzerinden şansınızı deneyebiliriz.";
-        } else {
-            resultTextDisplay.innerText = "Sınırda bir not. Almanya'da hazırlık eğitimi (Studienkolleg) seçeneğini değerlendirmeniz gerekebilir.";
+        if (resultTextDisplay) {
+            if (germanGrade >= 1.0 && germanGrade <= 1.5) {
+                resultTextDisplay.innerText = "Harika bir not! Almanya'daki prestijli teknik üniversitelerden kabul alma şansınız yüksek.";
+            } else if (germanGrade > 1.5 && germanGrade <= 2.5) {
+                resultTextDisplay.innerText = "İyi bir derece. Birçok Alman devlet üniversitesinin kabul şartlarını karşılıyorsunuz.";
+            } else if (germanGrade > 2.5 && germanGrade <= 3.5) {
+                resultTextDisplay.innerText = "Orta düzey bir not. Şartlı kabul sunan üniversiteler üzerinden şansınızı deneyebiliriz.";
+            } else {
+                resultTextDisplay.innerText = "Sınırda bir not. Almanya'da hazırlık eğitimi (Studienkolleg) seçeneğini değerlendirmeniz gerekebilir.";
+            }
         }
     });
 }
 
-// ==========================================
-// DİNAMİK ALAN GÖSTERİMİ (KOŞULLU GÖRÜNÜRLÜK)
-// ==========================================
+// Koşullu Görünürlük Düzenlemesi
 const eduStatusSelect = document.getElementById('eduStatus');
 const uniGradeGroup = document.getElementById('uniGradeGroup');
 const uniGradeInput = document.getElementById('uniGrade');
 
 if (eduStatusSelect && uniGradeGroup && uniGradeInput) {
-    // Eğitim durumu açılır menüsünde her değişim olduğunda çalışır
     eduStatusSelect.addEventListener('change', function() {
         const secilenDeger = eduStatusSelect.value;
-
-        // Eğer kullanıcı üniversite öğrencisi veya mezunu seçtiyse
         if (secilenDeger === "Üniversite Öğrencisi" || secilenDeger === "Üniversite Mezunu") {
-            uniGradeGroup.style.display = 'block'; // Kutuyu görünür yap
-            uniGradeInput.setAttribute('required', 'true'); // Zorunlu alan haline getir
+            uniGradeGroup.style.display = 'block';
+            uniGradeInput.setAttribute('required', 'true');
         } else {
-            // Lise seçildiyse veya boş bırakıldıysa
-            uniGradeGroup.style.display = 'none'; // Kutuyu gizle
-            uniGradeInput.removeAttribute('required'); // Zorunluluk kuralını kaldır
-            uniGradeInput.value = ''; // Gizlenirken içindeki eski yazıyı temizle
-            uniGradeInput.classList.remove('error'); // Varsa kırmızı hata çerçevesini sil
+            uniGradeGroup.style.display = 'none';
+            uniGradeInput.removeAttribute('required');
+            uniGradeInput.value = '';
+            uniGradeInput.classList.remove('error');
         }
     });
 }
-    // Hata sınıflarını anlık temizleme dinamikleri
-    evaluationForm.querySelectorAll('[required]').forEach(input => {
-        input.addEventListener('input', () => { if (input.value.trim()) input.classList.remove('error'); });
-        input.addEventListener('change', () => { if (input.value) input.classList.remove('error'); });
-    });
+
 // ==========================================
-// MOBİL MENÜ (HAMBURGER) ETKİLEŞİM MANTIĞI
+// 5. MOBİL MENÜ (HAMBURGER) VE YUKARI ÇIK SİSTEMİ
 // ==========================================
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
 
 if (menuToggle && navLinks) {
-    // Hamburger butonuna tıklandığında çalışır
     menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active'); // Menüyü açar/kapatır
-        menuToggle.classList.toggle('open');  // Üç çizgiyi X yapar
+        navLinks.classList.toggle('active');
+        menuToggle.classList.toggle('open');
     });
 
-    // Menü açıkken herhangi bir linke tıklandığında menüyü otomatik kapatır
-    const navItems = navLinks.querySelectorAll('a');
-    navItems.forEach(item => {
+    navLinks.querySelectorAll('a').forEach(item => {
         item.addEventListener('click', () => {
             navLinks.classList.remove('active');
-            menuToggle.classList.remove('remove');
             menuToggle.classList.remove('open');
         });
     });
 }
-// ==========================================
-// 4. YUKARI ÇIK (SCROLL TO TOP) MANTIĞI
-// ==========================================
-const backToTopBtn = document.getElementById('backtotop');
 
+const backToTopBtn = document.getElementById('backtotop');
 if (backToTopBtn) {
     window.addEventListener('scroll', function() {
         if (window.scrollY > 400) {
@@ -379,31 +402,27 @@ if (backToTopBtn) {
     });
 
     backToTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
+
 // ==========================================
-// 5. YATAY GRİD KAYDIRMA FONKSİYONU (2 KART BİRDEN)
+// 6. ANA YATAY SLIDER (2 KART BİRDEN GEÇİŞ)
 // ==========================================
 function slideGrid(direction) {
     const grid = document.querySelector('.uni-grid');
     if (!grid) return;
 
-    // Aktif ilk kartın genişliğini dinamik olarak ölçer
     const firstCard = grid.querySelector('.uni-card');
     if (!firstCard) return;
 
-    const cardWidth = firstCard.clientWidth; // Tek bir kartın pikselsel genişliği
-    const gap = 20; // CSS'te tanımladığımız kartlar arası boşluk (gap)
+    const cardWidth = firstCard.clientWidth; 
+    const gap = 20; 
 
-    // Her tıkta tam olarak 2 kart ve onların boşlukları kadar kaydırma mesafesi hesaplar
     const scrollAmount = (cardWidth + gap) * 2; 
     
     grid.scrollBy({
         left: direction * scrollAmount,
-        behavior: 'smooth' // Akıcı animasyonlu geçiş
+        behavior: 'smooth'
     });
 }
