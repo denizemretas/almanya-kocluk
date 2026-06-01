@@ -309,20 +309,31 @@ if (emailConfirmInput) emailConfirmInput.addEventListener('input', checkEmailMat
 if (emailInput) emailInput.addEventListener('input', checkEmailMatch);
 
 // 3. Formun Gönderilme Anı Kontrolü
+// 3. Formun Gönderilme Anı Kontrolü
 if (evaluationForm) {
     evaluationForm.addEventListener('submit', function(e) {
         
-        // --- [EN KRİTİK ADIM]: TARAYICI ZORUNLULUK KONTROLÜ ---
-        // Eğer HTML'de 'required' olan herhangi bir alan (İsim, Seviye vb.) boşsa,
-        // tarayıcının kendi uyarı balonunu tetikler ve JavaScript'in formu göndermesini engeller.
-        if (!evaluationForm.checkValidity()) {
-            // Tarayıcı kendi hata mesajlarını (Lütfen bu alanı doldurun vb.) göstersin diye 
-            // e.preventDefault() yapmıyoruz veya return ile burada kesiyoruz.
-            return; 
-        }
-
-        // Eğer tarayıcı kontrolleri başarılıysa sayfa yenilenmesini durdur ve özel kontrollere geç
+        // [KESİN ÇÖZÜM]: Sayfanın en başa atmasını ilk satırda bloke ediyoruz
         e.preventDefault(); 
+
+        // Sadece ekranda GÖRÜNÜR olan zorunlu alanların (İsim, Seviye vb.) doluluğunu kontrol eder
+        // Gizli olan alanlar boş olsa bile formu kilitlemez
+        let isFormValid = true;
+        const requiredInputs = evaluationForm.querySelectorAll('[required]');
+        
+        requiredInputs.forEach(input => {
+            // Eğer alan görünür durumdaysa ve içi boşsa
+            if (input.offsetParent !== null && !input.value.trim()) {
+                input.classList.add('error');
+                isFormValid = false;
+            }
+        });
+
+        // Eğer görünür zorunlu alanlardan biri bile boşsa işlemi burada kes, alert ver
+        if (!isFormValid) {
+            alert('Lütfen formdaki zorunlu alanları eksiksiz doldurunuz.');
+            return;
+        }
 
         if (!emailInput) {
             alert("Sistemsel bir hata oluştu: E-posta alanı bulunamadı.");
@@ -355,7 +366,7 @@ if (evaluationForm) {
         }
 
         // E-posta uyuşmazlık kontrolü
-        if (emailValue !== confirmEmailValue) {
+        if (emailConfirmGroup && emailConfirmGroup.style.display !== 'none' && emailValue !== confirmEmailValue) {
             if (emailConfirmInput) emailConfirmInput.classList.add('error');
             alert('Girdiğiniz e-posta adresleri uyuşmuyor. Lütfen kontrol edin.');
             if (emailConfirmInput) emailConfirmInput.focus();
@@ -419,12 +430,6 @@ if (evaluationForm) {
             console.error("Hata:", error);
             alert("Bağlantı hatası oluştu.");
         });
-    });
-
-    // Hata çerçevelerini anlık temizleme
-    evaluationForm.querySelectorAll('[required]').forEach(input => {
-        input.addEventListener('input', () => { if (input.value.trim()) input.classList.remove('error'); });
-        input.addEventListener('change', () => { if (input.value) input.classList.remove('error'); });
     });
 }
 
