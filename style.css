@@ -229,24 +229,51 @@ h1, h2, h3, h4 {
     background-color: #FFFFFF;
 }
 
-.uni-section .section-title,
-.uni-section .section-subtitle {
-    padding-left: 0 !important;
+/* ==========================================================================
+   TÜM SİTE GENELİ BAŞLIK VE ALT BAŞLIK MERKEZLEME
+   ========================================================================== */
+
+/* Sitedeki tüm ana başlıkları ve alt açıklamaları yatayda tamamen ortalar */
+.section-title {
     text-align: center !important;
     width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-bottom: 40px !important;
 }
 
-.uni-section .section-title {
+.section-title h2 {
+    font-size: 32px !important;
+    color: #1A2B4C !important;
     margin-top: 0 !important;
-    margin-bottom: 8px !important;
-    font-size: 28px !important;
-    color: #111827;
+    margin-bottom: 10px !important;
+    text-align: center !important;
 }
 
-.uni-section .section-subtitle {
-    margin-bottom: 30px !important;
-    color: #6B7280;
+.section-title p {
+    color: #6B7280 !important;
     font-size: 16px !important;
+    text-align: center !important;
+    max-width: 700px !important;
+    margin: 0 auto !important; /* Alt başlık metninin de ortalanmasını garanti eder */
+}
+
+/* Üniversiteler alanı için özel ek seçici temizliği */
+.uni-section .section-title,
+.uni-section .section-subtitle {
+    text-align: center !important;
+    padding-left: 0 !important;
+}
+
+/* Mobil Cihazlar İçin Başlık Boyutları */
+@media (max-width: 768px) {
+    .section-title h2 {
+        font-size: 24px !important;
+    }
+    .section-title p {
+        font-size: 14px !important;
+        padding: 0 15px !important;
+    }
 }
 
 .slider-container {
