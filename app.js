@@ -261,30 +261,89 @@ window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); 
 // 3. FORM GÖNDERİMİ VE SOĞUMA SÜRESİ (COOLDOWN)
 // ==========================================
 const evaluationForm = document.getElementById('evaluationForm');
+const emailInput = document.getElementById('email') || (evaluationForm ? evaluationForm.querySelector('input[type="email"]') : null);
+const emailConfirmInput = document.getElementById('emailConfirm');
+const emailConfirmGroup = document.getElementById('emailConfirmGroup');
+const matchMessage = document.getElementById('emailMatchMessage');
 
+// 1. İlk e-posta alanına veri girildiğinde ikinci kutuyu göster/gizle
+if (emailInput && emailConfirmGroup) {
+    emailInput.addEventListener('input', function() {
+        const emailValue = this.value.trim();
+        if (emailValue.includes('@') && emailValue.includes('.')) {
+            emailConfirmGroup.style.display = 'block';
+        } else {
+            emailConfirmGroup.style.display = 'none';
+            if (emailConfirmInput) emailConfirmInput.value = '';
+            if (matchMessage) matchMessage.style.display = 'none';
+        }
+    });
+}
+
+// 2. Canlı uyuşmazlık kontrolü ve alt yazı geri bildirimi
+function checkEmailMatch() {
+    if (!emailInput || !emailConfirmInput || !matchMessage) return;
+
+    const email = emailInput.value.trim().toLowerCase();
+    const confirmEmail = emailConfirmInput.value.trim().toLowerCase();
+
+    if (!confirmEmail) {
+        matchMessage.style.display = 'none';
+        emailConfirmInput.classList.remove('error');
+        return;
+    }
+
+    if (email === confirmEmail) {
+        matchMessage.textContent = '✓ E-posta adresleri eşleşti.';
+        matchMessage.style.color = '#059669';
+        matchMessage.style.display = 'block';
+        emailConfirmInput.classList.remove('error');
+    } else {
+        matchMessage.textContent = '✗ E-posta adresleri birbiriyle uyuşmuyor.';
+        matchMessage.style.color = '#DC2626';
+        matchMessage.style.display = 'block';
+    }
+}
+
+if (emailConfirmInput) emailConfirmInput.addEventListener('input', checkEmailMatch);
+if (emailInput) emailInput.addEventListener('input', checkEmailMatch);
+
+// 3. Formun Gönderilme Anı Kontrolü
 if (evaluationForm) {
     evaluationForm.addEventListener('submit', function(e) {
-        e.preventDefault(); 
-
-        const emailInput = document.getElementById('email') || evaluationForm.querySelector('input[type="email"]');
         if (!emailInput) return;
-        
+
         const emailValue = emailInput.value.trim().toLowerCase();
         const lastSubmitTime = localStorage.getItem(`submit_time_${emailValue}`);
         const currentTime = Date.now();
-        const cooldownPeriod = 10 * 60 * 1000; 
+        const cooldownPeriod = 10 * 60 * 1000;
 
         if (lastSubmitTime) {
             const timePassed = currentTime - parseInt(lastSubmitTime);
             if (timePassed < cooldownPeriod) {
+                e.preventDefault();
                 const remainingMinutes = Math.ceil((cooldownPeriod - timePassed) / 60000);
                 alert(`Bu e-posta adresi ile zaten bir başvuru yaptınız. Lütfen yeni bir gönderim için ${remainingMinutes} dakika bekleyin.`);
                 return;
             }
         }
 
+        // --- İKİNCİ E-POSTA DOĞRULAMA KONTROLÜ BURAYA EKLENDİ ---
+        if (emailConfirmInput) {
+            const confirmEmailValue = emailConfirmInput.value.trim().toLowerCase();
+            if (emailValue !== confirmEmailValue) {
+                e.preventDefault(); // Formun Web3Forms'a gitmesini engeller
+                emailConfirmInput.classList.add('error');
+                alert('Girdiğiniz e-posta adresleri uyuşmuyor. Lütfen kontrol edin.');
+                emailConfirmInput.focus();
+                return;
+            }
+        }
+        // -----------------------------------------------------
+
         const formData = new FormData(evaluationForm);
 
+        // Web3Forms API'sine Gönderim Süreci
         fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             body: formData
@@ -306,7 +365,7 @@ if (evaluationForm) {
         });
     });
 
-    // Anlık hata temizleme mekanizması
+    // Hata çerçevelerini anlık temizleme
     evaluationForm.querySelectorAll('[required]').forEach(input => {
         input.addEventListener('input', () => { if (input.value.trim()) input.classList.remove('error'); });
         input.addEventListener('change', () => { if (input.value) input.classList.remove('error'); });
