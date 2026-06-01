@@ -902,3 +902,53 @@ body:has(#uniModal.open) #backtotop, #uniModal.open ~ #backtotop {
     .btn-main, .btn-nav { padding: 10px 15px; font-size: 14px; }
     .modal-stats { flex-direction: column; gap: 10px; }
 }
+/* ==========================================================================
+   FOOTER MOBİL VE TABLET MERKEZLEME AYARI
+   ========================================================================== */
+
+@media screen and (max-width: 1028px) {
+    /* Footer içindeki sütun yapısını dikey tek sütun yapar ve merkeze çeker */
+    .footer-container {
+        flex-direction: column !important;
+        align-items: center !important; /* Tüm blokları yatayda ortalar */
+        text-align: center !important;  /* Tüm metinleri merkeze hizalar */
+        gap: 35px !important;
+        padding: 0 20px !important;
+    }
+
+    /* Sol tarafta kalan marka ve açıklama alanını genişleterek ortalar */
+    .footer-brand {
+        max-width: 100% !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .footer-brand h3, 
+    .footer-brand p {
+        text-align: center !important; /* Yazıların sola yaslanmasını engeller */
+        width: 100% !important;
+    }
+
+    /* Hızlı menü alanının listesini ve linklerini ortalar */
+    .footer-links {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .footer-links ul {
+        padding: 0 !important;
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* Liste elemanlarını tam merkeze dizer */
+    }
+
+    .footer-links ul li {
+        text-align: center !important;
+        width: 100% !important;
+    }
+}
