@@ -1,6 +1,9 @@
 // ==========================================
 // 1. ÜNİVERSİTE VERİ HAVUZU (OBJECT DATA)
 // ==========================================
+// ==========================================
+// 1. ÜNİVERSİTE VERİ HAVUZU (OBJECT DATA) - GÜNCEL HARİTALAR
+// ==========================================
 const uniData = {
     tum: {
         title: "Münih Teknik Üniversitesi (TUM)",
@@ -9,16 +12,18 @@ const uniData = {
         year: "1868",
         students: "50,000+",
         link: "https://www.tum.de",
-        images: ["images/TUM1.jpg", "images/TUM2.jpg", "images/TUM3.jpg"]
+        images: ["images/TUM1.jpg", "images/TUM2.jpg", "images/TUM3.jpg"],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.115858055416!2d11.565434315642302!3d48.1496181792444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e75ebe77e114f%3A0x6a0c0cbdf5780d3b!2sTechnical%20University%20of%20Munich!5e0!3m2!1str!2sde!4v1650000000000!5m2!1str!2sde"
     },
     rwth: {
         title: "RWTH Aachen Üniversitesi",
         location: "Aachen, Kuzey Ren-Vestfalya",
-        desc: "Avrupa'nın en büyük teknik üniversitelerinden biridir. Özellikle Makine Mühendisliği ve Bilgisayar Bilimleri alanlarında Almanya'nın bir numarası olarak kabul edilir. Aachen şehri tamamen bir öğrenci kentine dönüşmüştür.",
+        desc: "Avrupa'nın en büyük teknik üniversitelerinden biridir. Özellikle Makine Mühendisliği og Bilgisayar Bilimleri alanlarında Almanya'nın bir numarası olarak kabul edilir. Aachen şehri tamamen bir öğrenci kentine dönüşmüştür.",
         year: "1870",
         students: "47,000+",
         link: "https://www.rwth-aachen.de",
-        images: ["images/RWTH1.jpg", "images/RWTH2.jpg", "images/RWTH3.jpg"]
+        images: ["images/RWTH1.jpg", "images/RWTH2.jpg", "images/RWTH3.jpg"],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2522.9168541940954!2d6.077844015736636!3d50.77785367952136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c099687e3f28cf%3A0x1d4a04d0ad8c7a7b!2sRWTH%20Aachen%20University!5e0!3m2!1str!2sde!4v1650000000001!5m2!1str!2sde"
     },
     heidelberg: {
         title: "Heidelberg Üniversitesi",
@@ -27,7 +32,8 @@ const uniData = {
         year: "1386",
         students: "29,000+",
         link: "https://www.uni-heidelberg.de",
-        images: ["images/HEU1.jpg", "images/HEU2.jpg", "images/HEU3.jpg"]
+        images: ["images/HEU1.jpg", "images/HEU2.jpg", "images/HEU3.jpg"],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2593.68235287411!2d8.704944315688534!3d49.410180679345264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4797c104dc404f2d%3A0x6fb2bbcdbe9b053c!2sHeidelberg%20University!5e0!3m2!1str!2sde!4v1650000000008!5m2!1str!2sde"
     },
     stuttgart: {
         title: "Stuttgart Üniversitesi",
@@ -36,7 +42,8 @@ const uniData = {
         year: "1829",
         students: "22,000+",
         link: "https://www.uni-stuttgart.de",
-        images: ["images/STU1.jpg", "images/STU2.jpg", "images/STU3.jpg"]
+        images: ["images/STU1.jpg", "images/STU2.jpg", "images/STU3.jpg"],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2630.22235287411!2d9.172944315688534!3d48.77518067934526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799db4ca583cd1b%3A0x42f0e0d50044000!2sUniversity%20of%20Stuttgart!5e0!3m2!1str!2sde!4v1650000000009!5m2!1str!2sde"
     },
     berlin: {
         title: "Berlin Teknik Üniversitesi (TU Berlin)",
@@ -45,7 +52,8 @@ const uniData = {
         year: "1879",
         students: "35,000+",
         link: "https://www.tu.berlin",
-        images: ["images/TUB1.jpg", "images/TUB2.jpg", "images/TUB3.jpg"]
+        images: ["images/TUB1.jpg", "images/TUB2.jpg", "images/TUB3.jpg"],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.115858055416!2d13.323434315642302!3d52.5116181792444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a8511e4f4cbb39%3A0xbb1f7cb87a036fb3!2sTechnical%20University%20of%20Berlin!5e0!3m2!1str!2sde!4v1650000000010!5m2!1str!2sde"
     },
     braunschweig: {
         title: "TU Braunschweig",
@@ -54,7 +62,8 @@ const uniData = {
         year: "1745",
         students: "16,800+",
         link: "https://www.tu-braunschweig.de",
-        images: ["images/TUBR1.jpg", "images/TUBR2.jpg", "images/TUBR3.jpg"]
+        images: ["images/TUBR1.jpg", "images/TUBR2.jpg", "images/TUBR3.jpg"],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.115858055416!2d10.528434315642302!3d52.2736181792444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a0492daea2e071%3A0xb36ef0185e7b212f!2sTU%20Braunschweig!5e0!3m2!1str!2sde!4v1650000000011!5m2!1str!2sde"
     },
     darmstadt: {
         title: "TU Darmstadt",
@@ -63,7 +72,8 @@ const uniData = {
         year: "1877",
         students: "25,000+",
         link: "https://www.tu-darmstadt.de",
-        images: ["images/TUD1.jpg", "images/TUD2.jpg", "images/TUD3.jpg"]
+        images: ["images/TUD1.jpg", "images/TUD2.jpg", "images/TUD3.jpg"],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2545.115858055416!2d8.657434315642302!3d49.8756181792444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bd707af4628db9%3A0x633513a960df768f!2sTU%20Darmstadt!5e0!3m2!1str!2sde!4v1650000000012!5m2!1str!2sde"
     },
     dresden: {
         title: "TU Dresden",
@@ -72,7 +82,8 @@ const uniData = {
         year: "1828",
         students: "30,000+",
         link: "https://tu-dresden.de",
-        images: ["images/TUDR1.jpg", "images/TUDR2.jpg", "images/TUDR3.jpg"]
+        images: ["images/TUDR1.jpg", "images/TUDR2.jpg", "images/TUDR3.jpg"],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2509.115858055416!2d13.727434315642302!3d51.0286181792444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4709cf6e2467d581%3A0x272cf3c959736dbb!2sTU%20Dresden!5e0!3m2!1str!2sde!4v1650000000013!5m2!1str!2sde"
     },
     leibniz: {
         title: "Leibniz Universität Hannover",
@@ -81,7 +92,8 @@ const uniData = {
         year: "1831",
         students: "28,000+",
         link: "https://www.uni-hannover.de",
-        images: ["images/LEI1.jpg", "images/LEI2.jpg", "images/LEI3.jpg"]
+        images: ["images/LEI1.jpg", "images/LEI2.jpg", "images/LEI3.jpg"],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2435.115858055416!2d9.721434315642302!3d52.3826181792444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b074a3ca043a13%3A0x633513a960df768f!2sLeibniz%20University%20Hannover!5e0!3m2!1str!2sde!4v1650000000014!5m2!1str!2sde"
     },
     kit: {
         title: "Karlsruhe Teknoloji Enstitüsü (KIT)",
@@ -90,7 +102,8 @@ const uniData = {
         year: "2009",
         students: "22,000+",
         link: "https://www.kit.edu",
-        images: ["images/KIT1.jpg", "images/KIT2.jpg", "images/KIT3.jpg"]
+        images: ["images/KIT1.jpg", "images/KIT2.jpg", "images/KIT3.jpg"],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2621.115858055416!2d8.411434315642302!3d49.0116181792444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479979038e2d4cf7%3A0x42f0e0d50044000!2sKarlsruhe%20Institute%20of%20Technology!5e0!3m2!1str!2sde!4v1650000000015!5m2!1str!2sde"
     },
     "tu-clausthal": {
         title: "Clausthal Teknik Üniversitesi",
@@ -99,16 +112,18 @@ const uniData = {
         year: "1775",
         students: "4,000+",
         link: "https://www.tu-clausthal.de",
-        images: ["images/tu-clausthal1.jpg", "images/tu-clausthal2.jpg", "images/tu-clausthal3.jpg"]
+        images: ["images/tu-clausthal1.jpg", "images/tu-clausthal2.jpg", "images/tu-clausthal3.jpg"],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.9298418080516!2d10.337775915762886!3d51.80562697968565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a5223631f498cb%3A0xda5eb7a052865955!2sClausthal%20University%20of%20Technology!5e0!3m2!1str!2sde!4v1650000000002!5m2!1str!2sde"
     },
     "uni-koeln": {
         title: "Köln Üniversitesi",
         location: "Köln, Kuzey Ren-Vestfalya",
-        desc: "Almanya'nın en eski ve en büyük üniversitelerinden biridir. Özellikle hukuk, yönetim, iktisat, psikoloji og sosyal bilimler alanlarında küresel çapta yüksek bir saygınlığa sahiptir.",
+        desc: "Almanya'nın en eski ve en büyük üniversitelerinden biridir. Özellikle hukuk, yönetim, iktisat, psikoloji ve sosyal bilimler alanlarında küresel çapta yüksek bir saygınlığa sahiptir.",
         year: "1388",
         students: "50,000+",
         link: "https://www.uni-koeln.de",
-        images: ["images/uni-koeln1.jpg", "images/uni-koeln2.jpg", "images/uni-koeln3.jpg"]
+        images: ["images/uni-koeln1.jpg", "images/uni-koeln2.jpg", "images/uni-koeln3.jpg"],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2514.864700342938!2d6.926521315742055!3d50.92795177955896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bf2500fa822601%3A0x7d8a04d0ad8c7a7b!2sUniversity%20of%20Cologne!5e0!3m2!1str!2sde!4v1650000000003!5m2!1str!2sde"
     },
     "uni-frankfurt": {
         title: "Frankfurt Goethe Üniversitesi",
@@ -117,16 +132,18 @@ const uniData = {
         year: "1914",
         students: "45,000+",
         link: "https://www.uni-frankfurt.de",
-        images: ["images/uni-frankfurt1.jpg", "images/uni-frankfurt2.jpg", "images/uni-frankfurt3.jpg"]
+        images: ["images/uni-frankfurt1.jpg", "images/uni-frankfurt2.jpg", "images/uni-frankfurt3.jpg"],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2557.77123451904!2d8.665321315713215!3d50.12723167943216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bd0955fa822601%3A0x7d8a04d0ad8c7a7b!2sGoethe%20University%20Frankfurt!5e0!3m2!1str!2sde!4v1650000000004!5m2!1str!2sde"
     },
     "uni-freiburg": {
         title: "Freiburg Üniversitesi",
         location: "Freiburg im Breisgau, Baden-Württemberg",
-        desc: "Felsefe, beşeri bilimler, teoloji ve tıp alanlarında köklü bir akademik mirasa sahiptir. Beş asrı aşan tarihi ve Kara Ormanlar'ın kıyısındaki büyüleyici konumu ile tam bir klasik Alman öğrenci şehridir.",
+        desc: "Felsefe, beşeri bilimler, teoloji og tıp alanlarında köklü bir akademik mirasa sahiptir. Beş asrı aşan tarihi ve Kara Ormanlar'ın kıyısındaki büyüleyici konumu ile tam bir klasik Alman öğrenci şehridir.",
         year: "1457",
         students: "24,000+",
         link: "https://www.uni-freiburg.de",
-        images: ["images/uni-freiburg1.jpg", "images/uni-freiburg2.jpg", "images/uni-freiburg3.jpg"]
+        images: ["images/uni-freiburg1.jpg", "images/uni-freiburg2.jpg", "images/uni-freiburg3.jpg"],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2669.7420556535552!2d7.84666571581452!3d47.994519679210085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47911b5143a598c9%3A0x5efcd33eb22f9d5a!2sAlbert-Ludwigs-Universit%C3%A4t%20Freiburg!5e0!3m2!1str!2sde!4v1714560000000!5m2!1str!2sde"
     },
     "uni-paderborn": {
         title: "Paderborn Üniversitesi",
@@ -135,7 +152,8 @@ const uniData = {
         year: "1972",
         students: "20,000+",
         link: "https://www.uni-paderborn.de",
-        images: ["images/uni-paderborn1.jpg", "images/uni-paderborn2.jpg", "images/uni-paderborn3.jpg"]
+        images: ["images/uni-paderborn1.jpg", "images/uni-paderborn2.jpg", "images/uni-paderborn3.jpg"],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.564700342938!2d8.770521315742055!3d51.70825177955896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ba4bcf1b5fa82d%3A0xbcf2bbcdbe9b053c!2sPaderborn%20University!5e0!3m2!1str!2sde!4v1714560000001!5m2!1str!2sde"
     },
     "uni-mannheim": {
         title: "Mannheim Üniversitesi",
@@ -144,7 +162,8 @@ const uniData = {
         year: "1967",
         students: "12,000+",
         link: "https://www.uni-mannheim.de",
-        images: ["images/uni-mannheim1.jpg", "images/uni-mannheim2.jpg", "images/uni-mannheim3.jpg"]
+        images: ["images/uni-mannheim1.jpg", "images/uni-mannheim2.jpg", "images/uni-mannheim3.jpg"],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2592.564700342938!2d8.460521315742055!3d49.48325177955896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4797cc26ef822601%3A0x7d8a04d0ad8c7a7b!2sUniversity%20of%20Mannheim!5e0!3m2!1str!2sde!4v1650000000007!5m2!1str!2sde"
     }
 };
 
@@ -179,8 +198,8 @@ function openModal(uniId) {
 
     // Dinamik Harita Yükleme (Düzeltildi)
     const modalMap = document.getElementById('modalMap');
-    if (modalMap) {
-        modalMap.src = `https://maps.google.com/maps?q=${encodeURIComponent(uni.title + " " + uni.location)}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+    if (modalMap && uni.map) {
+    modalMap.src = uni.map; // Doğrudan nokta atışı adresi içeren haritayı yükler
     }
 
     // Resim havuzunu güncelleme ve çalıştırma
