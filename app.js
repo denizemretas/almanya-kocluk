@@ -311,7 +311,13 @@ if (emailInput) emailInput.addEventListener('input', checkEmailMatch);
 // 3. Formun Gönderilme Anı Kontrolü
 if (evaluationForm) {
     evaluationForm.addEventListener('submit', function(e) {
-        if (!emailInput) return;
+        // Formun sayfayı yenileyerek başa atmasını kesin olarak engeller
+        e.preventDefault(); 
+
+        if (!emailInput) {
+            alert("Sistemsel bir hata oluştu: E-posta alanı bulunamadı.");
+            return;
+        }
 
         const emailValue = emailInput.value.trim().toLowerCase();
         const lastSubmitTime = localStorage.getItem(`submit_time_${emailValue}`);
@@ -321,29 +327,26 @@ if (evaluationForm) {
         if (lastSubmitTime) {
             const timePassed = currentTime - parseInt(lastSubmitTime);
             if (timePassed < cooldownPeriod) {
-                e.preventDefault();
                 const remainingMinutes = Math.ceil((cooldownPeriod - timePassed) / 60000);
                 alert(`Bu e-posta adresi ile zaten bir başvuru yaptınız. Lütfen yeni bir gönderim için ${remainingMinutes} dakika bekleyin.`);
                 return;
             }
         }
 
-        // --- İKİNCİ E-POSTA DOĞRULAMA KONTROLÜ BURAYA EKLENDİ ---
+        // İkinci e-posta kutusu varsa ve uyuşmuyorsa süreci durdur
         if (emailConfirmInput) {
             const confirmEmailValue = emailConfirmInput.value.trim().toLowerCase();
             if (emailValue !== confirmEmailValue) {
-                e.preventDefault(); // Formun Web3Forms'a gitmesini engeller
                 emailConfirmInput.classList.add('error');
                 alert('Girdiğiniz e-posta adresleri uyuşmuyor. Lütfen kontrol edin.');
                 emailConfirmInput.focus();
                 return;
             }
         }
-        // -----------------------------------------------------
 
+        // Kod buraya kadar hatasız geldiyse verileri topla ve gönder
         const formData = new FormData(evaluationForm);
 
-        // Web3Forms API'sine Gönderim Süreci
         fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             body: formData
@@ -361,7 +364,7 @@ if (evaluationForm) {
         })
         .catch(error => {
             console.error("Hata:", error);
-            alert("Bağlantı hatası oluştu.");
+            alert("Bağlantı hatası oluştu. Lütfen internetinizi kontrol edin.");
         });
     });
 
