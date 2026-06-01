@@ -311,7 +311,6 @@ if (emailInput) emailInput.addEventListener('input', checkEmailMatch);
 // 3. Formun Gönderilme Anı Kontrolü
 if (evaluationForm) {
     evaluationForm.addEventListener('submit', function(e) {
-        // Formun sayfayı yenileyerek başa atmasını kesin olarak engeller
         e.preventDefault(); 
 
         if (!emailInput) {
@@ -333,7 +332,7 @@ if (evaluationForm) {
             }
         }
 
-        // İkinci e-posta kutusu varsa ve uyuşmuyorsa süreci durdur
+        // E-posta uyuşmazlık kontrolü
         if (emailConfirmInput) {
             const confirmEmailValue = emailConfirmInput.value.trim().toLowerCase();
             if (emailValue !== confirmEmailValue) {
@@ -344,7 +343,47 @@ if (evaluationForm) {
             }
         }
 
-        // Kod buraya kadar hatasız geldiyse verileri topla ve gönder
+        // --- YENİ: NOT ORTALAMASI VE TELEFON KONTROLLERİ ---
+        
+        // 1. Lise Notu Kontrolü (0 - 100 arası)
+        const liseGradeInput = document.getElementById('liseGrade');
+        if (liseGradeInput) {
+            const liseGrade = parseFloat(liseGradeInput.value);
+            if (isNaN(liseGrade) || liseGrade < 0 || liseGrade > 100) {
+                liseGradeInput.classList.add('error');
+                alert('Lütfen geçerli bir lise not ortalaması giriniz (0 - 100 arası).');
+                liseGradeInput.focus();
+                return;
+            }
+        }
+
+        // 2. Üniversite Notu Kontrolü (Sadece alan görünür durumdaysa ve 0 - 4 arası değilse)
+        const uniGradeInput = document.getElementById('uniGrade');
+        const uniGradeGroup = document.getElementById('uniGradeGroup');
+        if (uniGradeInput && uniGradeGroup && uniGradeGroup.style.display !== 'none') {
+            const uniGrade = parseFloat(uniGradeInput.value);
+            if (isNaN(uniGrade) || uniGrade < 0 || uniGrade > 4) {
+                uniGradeInput.classList.add('error');
+                alert('Lütfen geçerli bir üniversite not ortalaması giriniz (0.00 - 4.00 arası).');
+                uniGradeInput.focus();
+                return;
+            }
+        }
+
+        // 3. Telefon Numarası Uzunluk Kontrolü (Boş veya eksik numara girişini önlemek için)
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+            const phoneValue = phoneInput.value.trim();
+            if (phoneValue.length < 10) {
+                phoneInput.classList.add('error');
+                alert('Lütfen geçerli bir telefon numarası giriniz (En az 10 haneli olmalıdır).');
+                phoneInput.focus();
+                return;
+            }
+        }
+        // ---------------------------------------------------
+
+        // Tüm kontroller başarıyla geçildiyse formu gönderir
         const formData = new FormData(evaluationForm);
 
         fetch('https://api.web3forms.com/submit', {
@@ -364,10 +403,9 @@ if (evaluationForm) {
         })
         .catch(error => {
             console.error("Hata:", error);
-            alert("Bağlantı hatası oluştu. Lütfen internetinizi kontrol edin.");
+            alert("Bağlantı hatası oluştu.");
         });
     });
-
     // Hata çerçevelerini anlık temizleme
     evaluationForm.querySelectorAll('[required]').forEach(input => {
         input.addEventListener('input', () => { if (input.value.trim()) input.classList.remove('error'); });
