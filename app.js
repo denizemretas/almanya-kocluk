@@ -18,7 +18,7 @@ const uniData = {
     rwth: {
         title: "RWTH Aachen Üniversitesi",
         location: "Aachen, Kuzey Ren-Vestfalya",
-        desc: "Avrupa'nın en büyük teknik üniversitelerinden biridir. Özellikle Makine Mühendisliği og Bilgisayar Bilimleri alanlarında Almanya'nın bir numarası olarak kabul edilir. Aachen şehri tamamen bir öğrenci kentine dönüşmüştür.",
+        desc: "Avrupa'nın en büyük teknik üniversitelerinden biridir. Özellikle Makine Mühendisliği ve Bilgisayar Bilimleri alanlarında Almanya'nın bir numarası olarak kabul edilir. Aachen şehri tamamen bir öğrenci kentine dönüşmüştür.",
         year: "1870",
         students: "47,000+",
         link: "https://www.rwth-aachen.de",
@@ -108,7 +108,7 @@ const uniData = {
     "tu-clausthal": {
         title: "Clausthal Teknik Üniversitesi",
         location: "Clausthal-Zellerfeld, Aşağı Saksonya",
-        desc: "Mühendislik, malzeme bilimi ve enerji araştırmalarında güçlü köklere sahiptir. Uluslararası öğrencilere sunduğu avantajlı şartlı kabul olanakları ve kendi bünyesindeki yoğun Almanca hazırlık kursları ile bilinir.",
+        desc: "Mühendislik, malzeme bilimi ve enerji araştırmalarında güçlü köklere sahiptir. Uluslararası öğrencilere sunduğu avantajlı şartlı kabul olanakları ve anlaşmalı olduğu yoğun Almanca hazırlık kursları ile bilinir.",
         year: "1775",
         students: "4,000+",
         link: "https://www.tu-clausthal.de",
@@ -128,7 +128,7 @@ const uniData = {
     "uni-frankfurt": {
         title: "Frankfurt Goethe Üniversitesi",
         location: "Frankfurt am Main, Hessen",
-        desc: "Avrupa'nın finans başkentinde yer alan üniversite ekonomi, felsefe ve siyaset biliminde öncüdür. Sosyal teorilerde bir döneme damga vuran ünlü 'Frankfurt Okulu' akımına ev sahipliği yapmıştır.",
+        desc: "Avrupa'nın finans başkentinde yer alan üniversite ekonomi, felsefe ve siyaset biliminde öncüdür. Sosyal teorilerde bir döneme damga vuran 'Frankfurt Okulu' akımına ev sahipliği yapmıştır.",
         year: "1914",
         students: "45,000+",
         link: "https://www.uni-frankfurt.de",
@@ -138,7 +138,7 @@ const uniData = {
     "uni-freiburg": {
         title: "Freiburg Üniversitesi",
         location: "Freiburg im Breisgau, Baden-Württemberg",
-        desc: "Felsefe, beşeri bilimler, teoloji og tıp alanlarında köklü bir akademik mirasa sahiptir. Beş asrı aşan tarihi ve Kara Ormanlar'ın kıyısındaki büyüleyici konumu ile tam bir klasik Alman öğrenci şehridir.",
+        desc: "Felsefe, beşeri bilimler, teoloji og tıp alanlarında köklü bir akademik mirasa sahiptir. Beş asrı aşan tarihi ve Kara Ormanlar'ın kıyısındaki konumu ile tam bir klasik Alman öğrenci şehridir.",
         year: "1457",
         students: "24,000+",
         link: "https://www.uni-freiburg.de",
@@ -158,7 +158,7 @@ const uniData = {
     "uni-mannheim": {
         title: "Mannheim Üniversitesi",
         location: "Mannheim, Baden-Württemberg",
-        desc: "Büyük bir kısmı tarihi Mannheim Sarayı'nın içerisinde yer alan üniversite; işletme (BWL), ekonomi, siyaset bilimi ve sosyolojide Almanya'nın 1 numaralı ekolüdür. Akademik çevrelerde 'Almanya'nın Harvard'ı' olarak nitelendirilir.",
+        desc: "Büyük bir kısmı tarihi Mannheim Sarayı'nın içerisinde yer alan üniversite; işletme (BWL), ekonomi, siyaset bilimi ve sosyolojide Almanya'nın bir numaralı ekolüdür.",
         year: "1967",
         students: "12,000+",
         link: "https://www.uni-mannheim.de",
