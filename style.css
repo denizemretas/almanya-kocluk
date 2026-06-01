@@ -1,81 +1,19 @@
-/* ==========================================
-   YATAY DİZİLİM VE TAM SIĞDIRMA AYARLARI
-   ========================================== */
-
-.slider-container {
-    position: relative !important;
-    width: 100% !important;
-    padding: 0 40px !important; 
-    box-sizing: border-box !important;
-}
-
-.uni-grid { 
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    
-    /* Kaydırırken kartın ekrana tak diye oturmasını sağlar */
-    scroll-snap-type: x mandatory !important; 
-    
-    /* Kartlar arasındaki boşluk */
-    gap: 20px !important; 
-    padding: 15px 0 30px 0 !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    scrollbar-width: none !important;
-}
-
-.uni-grid::-webkit-scrollbar {
-    display: none !important; 
-}
-
-/* KART GENİŞLİĞİ HESAPLAMASI:
-   Masaüstünde ekranda tam olarak yan yana 4 adet kart gösterir.
-   Formül: (Kapsayıcı Genişliği - Toplam Boşluk Genişliği) / Kart Sayısı
-   calc((100% - (3 boşluk * 20px)) / 4)
-*/
-.uni-card {
-    flex: 0 0 calc((100% - 60px) / 4) !important; 
-    width: calc((100% - 60px) / 4) !important;
-    max-width: calc((100% - 60px) / 4) !important;
-    scroll-snap-align: start !important; 
-    margin-bottom: 0 !important;
-    box-sizing: border-box !important;
-}
-
-/* Tablet Ekranlar İçin (Yan yana tam 3 kart sığdırır) */
-@media (max-width: 1024px) {
-    .uni-card {
-        flex: 0 0 calc((100% - 40px) / 3) !important;
-        width: calc((100% - 40px) / 3) !important;
-        max-width: calc((100% - 40px) / 3) !important;
-    }
-}
-
-/* Mobil Ekranlar İçin (Yan yana tam 1 kart sığdırır) */
-@media (max-width: 768px) {
-    .slider-container {
-        padding: 0 15px !important; 
-    }
-    .uni-grid { 
-        gap: 15px !important; 
-    }
-    .uni-card { 
-        flex: 0 0 100% !important; 
-        width: 100% !important; 
-        max-width: 100% !important; 
-    }
-}
-
-/* 1. Genel Sıfırlama ve Font Tanımlamaları */
+/* ==========================================================================
+   1. GENEL SIFIRLAMA, TEMEL AYARLAR VE YATAY KİLİTLEME
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* YENİ: Kayma efektinin çalışması için html etiketine ekliyoruz */
+html, body {
+    width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -84,68 +22,111 @@ body {
     font-family: 'Inter', sans-serif;
     background-color: #F8F9FA;
     color: #2D3142;
+    padding-top: 80px !important; /* Sabit menünün (Navbar) altında boşluk bırakır */
 }
 
-h1, h2, h3 {
-    font-family: 'Montserrat', sans-serif; /* Başlıklar için güçlü font */
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
 }
 
-/* 2. Menü Tasarımı (Navbar) */
+/* ==========================================================================
+   2. SABİT NAVİGASYON (NAVBAR) VE LOGO SİSTEMİ
+   ========================================================================== */
 .navbar {
-    display: flex;
-    justify-content: space-between; /* Logoyu sola, linkleri sağa yaslar */
-    align-items: center; /* Elemanları dikeyde ortalar */
-    padding: 20px 10%; /* Üst-alt 20px, sağ-sol %10 boşluk */
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    min-height: 80px !important;
+    padding: 10px 10% !important;
     background-color: #1A2B4C; /* Derin Gece Mavisi */
-    position: sticky;
-    top: 0;
-    z-index: 100; /* Menünün her zaman diğer içeriklerin üstünde kalmasını sağlar */
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    z-index: 1000 !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
 }
 
-.logo {
-    color: white;
-    font-size: 24px;
-    font-weight: 700;
+.logo-container {
+    display: flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    flex-shrink: 0 !important;
+    height: 65px !important;
+}
+
+.logo-container .site-logo {
+    height: 100% !important;
+    width: auto !important;
+    max-height: 65px !important;
+    object-fit: contain !important;
+    display: block !important;
 }
 
 .nav-links {
     display: flex;
-    list-style: none; /* Liste başındaki noktaları kaldırır */
+    list-style: none;
+    align-items: center !important;
 }
 
 .nav-links li {
-    margin-left: 25px; /* Menü elemanlarının arasına boşluk bırakır */
+    margin-left: 25px;
 }
 
 .nav-links a {
     color: white;
-    text-decoration: none; /* Linklerin altındaki çizgiyi kaldırır */
+    text-decoration: none;
     font-size: 15px;
     font-weight: 500;
-    transition: color 0.3s ease; /* Renk değişimini yumuşatır */
+    transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #E5A93C; /* Fareyle üzerine gelindiğinde Almanya Altını rengi */
+    color: #E5A93C; /* Almanya Altını */
 }
 
-/* Menüdeki Vurgulu Buton */
 .btn-nav {
     background-color: #E5A93C;
     padding: 8px 16px;
     border-radius: 4px;
-    color: #1A2B4C !important; /* Bu butonun renginin beyaz kalmasını engeller */
+    color: #1A2B4C !important;
     font-weight: 600 !important;
 }
 
-/* 3. Giriş Alanı Tasarımı (Hero Section) */
+/* Hamburger Butonu (Masaüstünde Gizli) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101;
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; }
+.menu-toggle.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+/* ==========================================================================
+   3. GİRİŞ ALANI (HERO SECTION)
+   ========================================================================== */
 .hero {
-    /* Arka plana koyu mavi bir transparan katman ve geçici bir üniversite görseli ekliyoruz */
-    background: linear-gradient(rgba(26, 43, 76, 0.85), rgba(26, 43, 76, 0.85)), 
-                url('images/BUNDES.jpg');
+    background: linear-gradient(rgba(26, 43, 76, 0.85), rgba(26, 43, 76, 0.85)), url('images/BUNDES.jpg');
     background-size: cover;
     background-position: center;
-    height: 75vh; /* Ekran yüksekliğinin %75'ini kaplar */
+    height: 75vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -170,7 +151,6 @@ h1, h2, h3 {
     opacity: 0.9;
 }
 
-/* Ana Çağrı Butonu */
 .btn-main {
     display: inline-block;
     background-color: #E5A93C;
@@ -184,65 +164,149 @@ h1, h2, h3 {
 }
 
 .btn-main:hover {
-    transform: translateY(-3px); /* Butonun hafifçe yukarı yükselme efekti */
+    transform: translateY(-3px);
     background-color: #d4962b;
 }
-/* 4. Üniversiteler Bölümü Genel Yapısı */
-.universities {
-    padding: 80px 10%; /* Sayfa sağından ve solundan %10 boşluk */
-    background-color: #FFFFFF; /* Arka planı temiz beyaz yapıyoruz */
+
+/* ==========================================================================
+   4. HİZMETLERİMİZ BÖLÜMÜ (SON KUTULARI ORTALAYAN YENİ FLEX YAPISI)
+   ========================================================================== */
+.services-section {
+    padding: 80px 10%;
+    background-color: #F8F9FA;
 }
 
-.section-title {
+.services-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important; /* Altta kalan 2 kutuyu otomatik ortalar */
+    gap: 30px !important;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-box {
+    background-color: #FFFFFF;
+    padding: 40px 30px;
+    border-radius: 8px;
     text-align: center;
-    margin-bottom: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    border-top: 4px solid #1A2B4C;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Masaüstünde yan yana tam 3 kutu sığacak şekilde hesaplanır */
+    flex: 0 0 calc((100% - 60px) / 3) !important;
+    width: calc((100% - 60px) / 3) !important;
 }
 
-.section-title h2 {
-    font-size: 32px;
-    color: #1A2B4C; /* Ana kurumsal lacivert */
-    margin-bottom: 10px;
+.service-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border-top-color: #E5A93C;
 }
 
-.section-title p {
-    color: #666;
-    font-size: 16px;
+.service-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
 }
 
-/* CSS Grid Düzeni */
-.uni-grid {
-    display: grid;
-    /* Ekran genişliğine göre kartları otomatik sığdırır, her kart en az 320px olur */
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px; /* Kartların arasındaki boşluk */
+.service-box h3 {
+    font-size: 20px;
+    color: #1A2B4C;
+    margin-bottom: 15px;
 }
 
-/* Üniversite Kart Tasarımı */
+.service-box p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555555;
+}
+
+/* ==========================================================================
+   5. ÜNİVERSİTELER BÖLÜMÜ VE REKABETÇİ SLIDER SİSTEMİ
+   ========================================================================== */
+.universities {
+    padding: 80px 0; /* İçerik kaydırıcı kenarlara tam esnesin diye sağ-sol sıfırlandı */
+    background-color: #FFFFFF;
+}
+
+.uni-section .section-title,
+.uni-section .section-subtitle {
+    padding-left: 0 !important;
+    text-align: center !important;
+    width: 100% !important;
+}
+
+.uni-section .section-title {
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+    font-size: 28px !important;
+    color: #111827;
+}
+
+.uni-section .section-subtitle {
+    margin-bottom: 30px !important;
+    color: #6B7280;
+    font-size: 16px !important;
+}
+
+.slider-container {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 45px !important; 
+    box-sizing: border-box !important;
+}
+
+.uni-grid { 
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important; 
+    gap: 20px !important; 
+    padding: 15px 0 30px 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    scrollbar-width: none !important;
+}
+
+.uni-grid::-webkit-scrollbar {
+    display: none !important; 
+}
+
+/* Her ekrana tam sığan dinamik 4'lü kart yapısı */
 .uni-card {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 0 0 calc((100% - 60px) / 4) !important; 
+    width: calc((100% - 60px) / 4) !important;
+    max-width: calc((100% - 60px) / 4) !important;
+    scroll-snap-align: start !important; 
+    margin-bottom: 0 !important;
     background-color: #F8F9FA;
     border-radius: 8px;
-    overflow: hidden; /* İçerideki görsellerin köşelerden taşmasını engeller */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Çok hafif bir gölge efekti */
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Fareyle kartın üzerine gelindiğinde yapılacak hareket */
 .uni-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* Kartın Görsel Alanı */
 .uni-img {
     height: 200px;
     background-size: cover;
     background-position: center;
-    position: relative; /* Badge etiketini konumlandırmak için */
+    position: relative;
 }
 
-/* Kart İçindeki Yazı Alanları */
 .uni-info {
     padding: 25px;
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
 }
 
 .uni-info h3 {
@@ -260,40 +324,203 @@ h1, h2, h3 {
 .uni-desc {
     font-size: 14px;
     line-height: 1.6;
-    margin-bottom: 20px;
     color: #4A4A4A;
+    min-height: 75px !important; /* Açıklama kutularını hizalar */
+    margin-bottom: 15px !important;
 }
 
-/* Kartın En Altındaki Ek Bilgi Alanı */
 .uni-meta {
     border-top: 1px solid #EAEAEA;
-    padding-top: 15px;
+    padding-top: 10px !important;
+    margin-top: auto !important;
     display: flex;
     justify-content: space-between;
     font-size: 13px;
     color: #555;
 }
-/* 5. Açılır Pencere (Modal) Tasarımı */
+
+/* Slider Fade Efektli Ok Butonları */
+.slide-btn {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.85) !important;
+    border: 1px solid #ddd !important;
+    border-radius: 50% !important;
+    color: #333 !important;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease, background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.slider-container:hover .slide-btn { opacity: 1; }
+.slide-btn:hover { background-color: #f9f9f9 !important; }
+.prev-btn { left: 0 !important; }
+.next-btn { right: 0 !important; }
+
+/* ==========================================
+   6. NOT HESAPLAMA BÖLÜMÜ
+   ========================================== */
+.calculator-section {
+    padding: 80px 10%;
+    background-color: #F8F9FA;
+}
+
+.calc-container {
+    display: flex;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.calc-box, .result-box {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1A2B4C;
+}
+
+.form-group select, .form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #D1D5DB;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #2D3142;
+}
+
+.result-box {
+    background-color: #1A2B4C;
+    color: white;
+    padding: 30px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.result-box h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.result-value {
+    font-size: 54px;
+    font-weight: 700;
+    color: #E5A93C;
+    margin-bottom: 15px;
+}
+
+.result-text {
+    font-size: 14px;
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+/* ==========================================
+   7. ÖN DEĞERLENDİRME FORMU
+   ========================================== */
+.contact-section {
+    padding: 80px 10%;
+    background-color: #FFFFFF;
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #F8F9FA;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.form-group input.error, .form-group select.error {
+    border-color: #DC2626;
+    background-color: #FEF2F2;
+}
+
+.form-group input[type="file"] {
+    padding: 8px;
+    background-color: white;
+    font-size: 13px;
+}
+
+.success-box {
+    text-align: center;
+    padding: 30px;
+    background-color: #ECFDF5;
+    border: 1px solid #A7F3D0;
+    border-radius: 6px;
+    color: #065F46;
+    animation: fadeIn 0.4s ease;
+}
+
+.success-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: #059669;
+}
+
+.success-box h3 {
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.success-box p {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   8. DETAY AÇILIR PENCERE (MODAL SİSTEMİ)
+   ========================================== */
 .modal {
-    display: none; /* Başlangıçta tamamen gizli */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Arkadaki siteyi karartan transparan siyah layer */
-    z-index: 1000; /* Her şeyin en üstünde görünmesi için */
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2000 !important;
     justify-content: center;
     align-items: center;
     padding: 20px;
 }
 
-/* Modal aktif olduğunda bu sınıfı JS ile ekleyeceğiz */
-.modal.open {
-    display: flex;
-}
+.modal.open { display: flex; }
 
-/* Pencerenin İçindeki Beyaz Kutu */
 .modal-content {
     background-color: white;
     padding: 40px;
@@ -302,37 +529,34 @@ h1, h2, h3 {
     width: 100%;
     position: relative;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    animation: fadeIn 0.3s ease; /* Açılış efekti */
+    animation: fadeIn 0.3s ease;
 }
 
-/* Kapatma Butonu (X) */
-/* Yenilenmiş Modal Kapatma (Çarpı) Butonu */
 .close-btn {
     position: absolute;
     top: 15px;
     right: 15px;
     width: 36px;
     height: 36px;
-    background-color: rgba(255, 255, 255, 0.85); /* Görsel üzerinde görünmesi için yarı saydam beyaz arka plan */
-    color: #1F2937; /* Koyu gri çarpı rengi */
+    background-color: rgba(255, 255, 255, 0.85);
+    color: #1F2937;
     font-size: 28px;
     font-weight: bold;
     line-height: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%; /* Kusursuz yuvarlak yapı */
+    border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Hafif gölge ile öne çıkarma */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     transition: background-color 0.2s, transform 0.2s;
-    z-index: 150; /* Fotoğrafın ve slider oklarının kesinlikle üstünde kalması için yüksek katman değeri */
+    z-index: 150;
 }
 
-/* Çarpı butonuna dokunulduğunda veya gelindiğinde */
 .close-btn:hover {
     background-color: #FFFFFF;
     color: #000000;
-    transform: scale(1.05); /* Hafif büyüme efekti */
+    transform: scale(1.05);
 }
 
 .modal-location {
@@ -346,13 +570,84 @@ hr {
     margin-bottom: 20px;
 }
 
-.modal-description {
+.modal-desc {
+    margin-bottom: 25px !important;
     line-height: 1.6;
     color: #4A4A4A;
-    margin-bottom: 25px;
 }
 
-/* İstatistik Alanı Düzeni */
+.modal-slider {
+    position: relative;
+    overflow: hidden;
+    height: 320px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slider-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    z-index: 1;
+}
+
+.slider-slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.modal-slider .prev, 
+.modal-slider .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #FFFFFF !important;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    z-index: 10;
+    user-select: none;
+}
+
+.modal-slider .prev { left: 15px; }
+.modal-slider .next { right: 15px; }
+.modal-slider .prev:hover, .modal-slider .next:hover { background-color: rgba(0, 0, 0, 0.8); }
+
+.modal-map {
+    width: 100%;
+    height: 180px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #E5E7EB;
+}
+
+.modal-map iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
 .modal-stats {
     display: flex;
     gap: 20px;
@@ -381,536 +676,14 @@ hr {
     color: #1A2B4C;
 }
 
-/* Yumuşak açılış efekti animasyonu */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-/* 5.1. Modal Resim Kaydırıcı (Slider) Tasarımı */
-.modal-slider {
-    position: relative;
-    width: 100%;
-    height: 280px; /* Fotoğrafların sabit duracağı yükseklik */
-    margin-bottom: 20px;
-    border-radius: 6px;
-    overflow: hidden; /* Taşmaları engeller */
-    background-color: #EAEAEA;
-}
-
-#modalImg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Resmin bozulmadan alanı kaplamasını sağlar */
-    display: block;
-}
-
-/* Sağ ve Sol Ok Butonları */
-.slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%); /* Butonları dikeyde tam ortalar */
-    background-color: rgba(26, 43, 76, 0.6); /* Transparan kurumsal lacivert */
-    color: white;
-    border: none;
-    font-size: 20px;
-    font-weight: bold;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s;
-}
-
-.slider-btn:hover {
-    background-color: rgba(26, 43, 76, 0.9);
-}
-
-.prev-btn {
-    left: 15px;
-}
-
-.next-btn {
-    right: 15px;
-}
-/* 6. Not Hesaplama Bölümü Tasarımı */
-.calculator-section {
-    padding: 80px 10%;
-    background-color: #F8F9FA; /* Gri arka plan */
-}
-
-.calc-container {
-    display: flex;
-    gap: 40px;
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: #FFFFFF;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-.calc-box, .result-box {
-    flex: 1; /* İki kutuyu da eşit genişliğe ayarlar */
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: #1A2B4C;
-}
-
-.form-group select, .form-group input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #D1D5DB;
-    border-radius: 4px;
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    color: #2D3142;
-}
-
-/* Sonuç Kutusu Detayları */
-.result-box {
-    background-color: #1A2B4C; /* Kurumsal lacivert */
-    color: white;
-    padding: 30px;
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.result-box h3 {
-    font-size: 18px;
-    margin-bottom: 15px;
-    opacity: 0.9;
-}
-
-.result-value {
-    font-size: 54px;
-    font-weight: 700;
-    color: #E5A93C; /* Almanya altını rengi */
-    margin-bottom: 15px;
-}
-
-.result-text {
-    font-size: 14px;
-    opacity: 0.8;
-    line-height: 1.5;
-}
-/* 7. Ön Değerlendirme Formu Tasarımı */
-.contact-section {
-    padding: 80px 10%;
-    background-color: #FFFFFF;
-}
-
-.form-container {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #F8F9FA;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-}
-
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-/* Hatalı Giriş Yapıldığında Input Çerçevesini Kırmızı Yapacak Sınıf */
-.form-group input.error, .form-group select.error {
-    border-color: #DC2626;
-    background-color: #FEF2F2;
-}
-
-/* Dosya yükleme inputu için özel sadeleştirme */
-.form-group input[type="file"] {
-    padding: 8px;
-    background-color: white;
-    font-size: 13px;
-}
-
-/* Başarı Mesaj Kutusu Tasarımı */
-.success-box {
-    text-align: center;
-    padding: 30px;
-    background-color: #ECFDF5;
-    border: 1px solid #A7F3D0;
-    border-radius: 6px;
-    color: #065F46;
-    animation: fadeIn 0.4s ease;
-}
-
-.success-icon {
-    font-size: 40px;
-    margin-bottom: 15px;
-    color: #059669;
-}
-
-.success-box h3 {
-    margin-bottom: 10px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.success-box p {
-    font-size: 15px;
-    line-height: 1.6;
-}
-/* 8. Hizmetlerimiz Bölümü Tasarımı */
-.services-section {
-    padding: 80px 10%;
-    background-color: #F8F9FA; /* Hafif gri arka plan ile üniversiteler bölümünden ayırıyoruz */
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.service-box {
-    background-color: #FFFFFF;
-    padding: 40px 30px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-    border-top: 4px solid #1A2B4C; /* Kutuların üstüne ince kurumsal lacivert çizgi */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Fareyle üzerine gelindiğinde kutunun tepki vermesi */
-.service-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-    border-top-color: #E5A93C; /* Üstteki çizgi fareyle gelindiğinde altın sarısına döner */
-}
-
-.service-icon {
-    font-size: 40px;
-    margin-bottom: 20px;
-}
-
-.service-box h3 {
-    font-size: 20px;
-    color: #1A2B4C;
-    margin-bottom: 15px;
-}
-
-.service-box p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #555555;
-}
-/* 9. Sayfa Altı (Footer) Tasarımı */
-.main-footer {
-    background-color: #1A2B4C; /* Kurumsal lacivert */
-    color: #FFFFFF;
-    padding: 60px 10% 20px 10%;
-    font-family: 'Inter', sans-serif;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-bottom: 40px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-brand {
-    max-width: 400px;
-}
-
-.footer-brand h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #E5A93C; /* Altın sarısı */
-}
-
-.footer-brand p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #D1D5DB;
-}
-
-.footer-links h4 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    margin-bottom: 15px;
-    color: #FFFFFF;
-}
-
-.footer-links ul {
-    list-style: none;
-}
-
-.footer-links ul li {
-    margin-bottom: 10px;
-}
-
-.footer-links ul li a {
-    color: #D1D5DB;
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.2s;
-}
-
-.footer-links ul li a:hover {
-    color: #E5A93C;
-}
-
-/* Telif Hakkı Alanı */
-.footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    font-size: 12px;
-    color: #9CA3AF;
-}
-
-/* Hamburger Butonu Genel Tasarımı (Masaüstünde Gizli) */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 26px;
-    height: 18px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 101;
-}
-
-.menu-toggle span {
-    width: 100%;
-    height: 3px;
-    background-color: #FFFFFF;
-    border-radius: 2px;
-    transition: all 0.3s ease; /* Dönüşüm efekti hızı */
-}
-
-/* Buton tıklandığında (X işaretine dönüşüm animasyonu) */
-.menu-toggle.open span:nth-child(1) {
-    transform: translateY(7.5px) rotate(45deg);
-}
-
-.menu-toggle.open span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle.open span:nth-child(3) {
-    transform: translateY(-7.5px) rotate(-45deg);
-}
-/* ==========================================
-   10. MOBIL UYUM (RESPONSIVE DESIGN)
-   ========================================== */
-
-/* Tablet ve Küçük Ekranlar İçin (Maksimum 768px genişlik) */
-@media screen and (max-width: 768px) {
-    
-    /* Genel Bölüm İçi Boşlukları Azaltma */
-    .hero, .services-section, .universities, .calculator-section, .contact-section, .main-footer {
-        padding: 50px 5%;
-    }
-
-    /* Mobil navbar hizalaması (Ögeler yan yana kalır) */
-    .navbar nav {
-        display: contents;
-    }
-
-    .menu-toggle {
-        display: flex; /* Mobilde butonu görünür yap */
-    }
-
-    .menu-toggle {
-        display: flex; /* Mobilde butonu görünür yap */
-    }
-
-    /* Nav Linklerini Dikey Açılır Menü Haline Getirme */
-    .nav-links {
-        display: none; /* Başlangıçta gizli */
-        flex-direction: column;
-        position: absolute;
-        top: 100%; /* Navbarın hemen altından başlar */
-        left: 0;
-        width: 100%;
-        background-color: #1A2B4C;
-        padding: 25px 0;
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        gap: 20px;
-        text-align: center;
-        z-index: 99;
-    }
-
-    /* Menü Aktif Olduğunda (JS ile eklenecek sınıf) */
-    .nav-links.active {
-        display: flex;
-    }
-
-    /* Giriş Alanı (Hero) Metin Boyutları */
-    .hero h1 {
-        font-size: 28px;
-    }
-
-    .hero p {
-        font-size: 16px;
-    }
-
-    /* Not Hesaplama Alanı Düzenlemesi (Yan yana olan kutuları alt alta alır) */
-    .calc-container {
-        flex-direction: column;
-        padding: 25px;
-        gap: 25px;
-    }
-
-    .result-value {
-        font-size: 42px;
-    }
-
-    /* Ön Değerlendirme Formu Düzenlemesi */
-    .form-container {
-        padding: 25px;
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr; /* Form alanlarını tek sütun yapar */
-    }
-
-    /* Açılır Pencere (Modal) İçerik Düzenlemesi */
-    .modal-content {
-        padding: 20px;
-        max-height: 90vh; /* Ekrandan taşmayı önlemek için maksimum yükseklik */
-        overflow-y: auto;  /* Küçük ekranlarda modal içi kaydırma çubuğu açar */
-    }
-
-    .modal-slider {
-        height: 200px; /* Görsel yüksekliğini küçültür */
-    }
-
-    /* Sayfa Altı (Footer) Düzenlemesi */
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-    }
-}
-
-/* Çok Küçük Ekranlar / Mobil Telefonlar İçin (Maksimum 480px genişlik) */
-@media screen and (max-width: 480px) {
-    .hero h1 {
-        font-size: 24px;
-    }
-
-    .nav-links {
-        font-size: 14px;
-    }
-
-    .btn-main, .btn-nav {
-        padding: 10px 15px;
-        font-size: 14px;
-    }
-
-    .modal-stats {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-/* ==========================================
-   11. DİNAMİK MODAL, OKLAR VE BUTON TASARIMI
-   ========================================== */
-
-/* Slider Ana Kutusu */
-.modal-slider {
-    position: relative;
-    overflow: hidden;
-    height: 320px; /* Resme daha geniş dikey alan tanır */
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.slider-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-/* Üst üste binen resim odaları */
-.slider-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0;
-    transition: opacity 0.6s ease-in-out;
-    z-index: 1;
-}
-
-.slider-slide.active {
-    opacity: 1;
-    z-index: 2; /* Aktif resmi öne çıkarır */
-}
-
-/* Sağ ve Sol Geçiş Oklarının Tasarımı ve Konumu */
-.modal-slider .prev, 
-.modal-slider .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    background-color: rgba(0, 0, 0, 0.5); /* Yarı saydam koyu halka */
-    color: #FFFFFF !important;
-    font-size: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    z-index: 10; /* Resimlerin kesinlikle üstünde kalmalarını sağlar */
-    user-select: none;
-}
-
-.modal-slider .prev { left: 15px; }
-.modal-slider .next { right: 15px; }
-
-.modal-slider .prev:hover, 
-.modal-slider .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Sarı Web Sitesi Butonunun Düzeni */
 #modalLink {
     display: block !important;
     width: 100%;
     text-align: center;
     box-sizing: border-box;
-    margin-bottom: 12px; /* Alttaki gri butonla arasına boşluk bırakır */
+    margin-bottom: 12px;
 }
 
-/* Alt Kapatma Butonunun Yeni Düzeni */
 .btn-close-modal {
     display: block !important;
     width: 100%;
@@ -928,13 +701,15 @@ hr {
     transition: background-color 0.2s, color 0.2s;
 }
 
-.btn-close-modal:hover {
-    background-color: #E5E7EB;
-    color: #1F2937;
+.btn-close-modal:hover { background-color: #E5E7EB; color: #1F2937; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* ==========================================
-   12. YUKARI ÇIK (BACK TO TOP) BUTONU
+   9. YUKARI ÇIK VE FOOTER TASARIMI
    ========================================== */
 #backtotop {
     position: fixed !important;
@@ -952,277 +727,101 @@ hr {
     align-items: center !important;
     justify-content: center !important;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) !important;
-    opacity: 0; /* Başlangıçta gizli */
+    opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease, background-color 0.2s, transform 0.2s !important;
     z-index: 9999 !important;
 }
 
-/* Sayfa aşağı kaydırıldığında görünecek sınıf */
-#backtotop.show {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-}
+#backtotop.show { opacity: 1 !important; pointer-events: auto !important; }
+#backtotop:hover { background-color: #4B5563 !important; transform: scale(1.05) !important; }
 
-#backtotop:hover {
-    background-color: #4B5563 !important;
-    transform: scale(1.05) !important;
-}
-/* ==========================================
-   13. MODAL BOŞLUK VE CANLI HARİTA TASARIMI
-   ========================================== */
-
-/* Bilgi yazısının altındaki boşluğu artırır */
-.modal-desc {
-    margin-bottom: 25px !important;
-    line-height: 1.6;
-}
-
-/* Harita çerçevesinin tasarımı */
-.modal-map {
-    width: 100%;
-    height: 180px; /* Haritanın dikey yüksekliği */
-    margin-bottom: 25px; /* Alttaki istatistiklerle arasındaki boşluk */
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid #E5E7EB;
-}
-
-.modal-map iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-/* ==========================================
-   15. MODAL AÇIKKEN YUKARI ÇIK BUTONUNU GİZLE
-   ========================================== */
-body:has(#uniModal.open) #backtotop,
-#uniModal.open ~ #backtotop {
+body:has(#uniModal.open) #backtotop, #uniModal.open ~ #backtotop {
     opacity: 0 !important;
     pointer-events: none !important;
-    transition: opacity 0.2s ease !important;
-}
-/* ==========================================
-   16. KART İÇERİKLERİNİ VE METADATALARI HİZALAMA
-   ========================================== */
-
-/* Kart yapısının dikeyde tamamen esnemesini sağlar */
-.uni-card {
-    display: flex !important;
-    flex-direction: column !important;
 }
 
-/* Kart içerik alanının kalan boşluğu doldurmasını sağlar */
-.uni-info {
-    display: flex !important;
-    flex-direction: column !important;
-    flex-grow: 1 !important;
+.main-footer {
+    background-color: #1A2B4C;
+    color: #FFFFFF;
+    padding: 60px 10% 20px 10%;
+    font-family: 'Inter', sans-serif;
 }
 
-/* Açıklama alanına standart bir alt yükseklik tanıyarak hizayı eşitler */
-.uni-desc {
-    min-height: 75px !important; /* Yaklaşık 3 satırlık sabit bir alan açar */
-    margin-bottom: 15px !important;
-}
-
-/* Eğitim dili alanını her koşulda kartın en alt sınırına yaslar */
-.uni-meta {
-    margin-top: auto !important;
-    padding-top: 10px !important;
-}
-/* ==========================================
-   17. YATAY KAYDIRMA OK BUTONLARI (FADE EFEKTLİ)
-   ========================================== */
-
-/* Okları ve grid'i saran ana kutu */
-.slider-container {
-    position: relative; /* Okların buna göre hizalanması için */
-    width: 100%;
-}
-
-/* Ok butonlarının ortak stili */
-.slide-btn {
-    position: absolute;
-    top: 50%; /* Dikeyde ortala */
-    transform: translateY(-50%); /* Tam ortalama için */
-    width: 45px;
-    height: 45px;
-    background-color: rgba(255, 255, 255, 0.85); /* Hafif şeffaf beyaz */
-    border: 1px solid #ddd;
-    border-radius: 50%; /* Yuvarlak */
-    color: #333;
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 10; /* Kartların üstünde kalması için */
-    opacity: 0; /* Başlangıçta gizli */
-    transition: opacity 0.3s ease, background-color 0.2s; /* Fade efekti */
+.footer-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* slider-container'ın üzerine gelince okları göster */
-.slider-container:hover .slide-btn {
-    opacity: 1;
-}
+.footer-brand { max-width: 400px; }
+.footer-brand h3 { font-size: 24px; margin-bottom: 15px; color: #E5A93C; }
+.footer-brand p { font-size: 14px; line-height: 1.6; color: #D1D5DB; }
+.footer-links h4 { font-size: 16px; margin-bottom: 15px; color: #FFFFFF; }
+.footer-links ul { list-style: none; }
+.footer-links ul li { margin-bottom: 10px; }
+.footer-links ul li a { color: #D1D5DB; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+.footer-links ul li a:hover { color: #E5A93C; }
+.footer-bottom { text-align: center; padding-top: 20px; font-size: 12px; color: #9CA3AF; }
 
-/* Okların üzerine gelince renk değişimi */
-.slide-btn:hover {
-    background-color: #f9f9f9;
-}
+/* ==========================================================================
+   10. MEDİA QUERİES (TABLET VE MOBİL UYUM HİYERARŞİSİ)
+   ========================================================================== */
 
-/* Sol ok konumu */
-.prev-btn {
-    left: -15px; /* Grid'in biraz dışında dursun */
-}
-
-/* Sağ ok konumu */
-.next-btn {
-    right: -15px;
-}
-
-/* Mobilde okları gizle (Kullanıcı zaten parmakla kaydırıyor) */
-@media (max-width: 768px) {
-    .slide-btn {
-        display: none !important;
+/* TABLET EKRANLAR (Maksimum 1024px) */
+@media screen and (max-width: 1024px) {
+    .service-card, .service-box {
+        flex: 0 0 calc((100% - 30px) / 2) !important; /* Yan yana tam 2 kutu yapar */
+        width: calc((100% - 30px) / 2) !important;
+    }
+    .uni-card {
+        flex: 0 0 calc((100% - 40px) / 3) !important; /* Yan yana tam 3 üniversite kartı yapar */
+        width: calc((100% - 40px) / 3) !important;
+        max-width: calc((100% - 40px) / 3) !important;
     }
 }
-/* ==========================================
-   18. BAŞLIK VE ALT BAŞLIK DÜZENLEMESİ (ORTALANMIŞ)
-   ========================================== */
 
-/* Ana başlık ve alt başlığı yatayda tamamen ortalar */
-.uni-section .section-title,
-.uni-section .section-subtitle {
-    padding-left: 0 !important; /* Eski sol boşluğu sıfırlar */
-    text-align: center !important; /* Metni merkeze hizalar */
-    width: 100% !important;
-}
+/* MOBİL EKRANLAR (Maksimum 768px) */
+@media screen and (max-width: 768px) {
+    body { padding-top: 65px !important; }
+    .navbar { min-height: 65px !important; padding: 10px 20px !important; }
+    .navbar nav { display: contents; }
+    .menu-toggle { display: flex; }
+    
+    .logo-container { height: 45px !important; }
+    .logo-container .site-logo { max-height: 45px !important; }
 
-.uni-section .section-title {
-    margin-top: 0 !important;
-    margin-bottom: 8px !important;
-    font-size: 28px !important;
-    color: #111827;
-}
-
-.uni-section .section-subtitle {
-    margin-bottom: 30px !important;
-    color: #6B7280;
-    font-size: 16px !important;
-}
-
-/* Mobil Ekranlar İçin Yazı Boyutu Ayarı */
-@media (max-width: 768px) {
-    .uni-section .section-title {
-        font-size: 22px !important;
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #1A2B4C;
+        padding: 25px 0;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        gap: 20px;
+        text-align: center;
+        z-index: 99;
     }
-    .uni-section .section-subtitle {
-        font-size: 14px !important;
-        padding: 0 15px !important; /* Mobilde çok uzun alt başlıkların kenara yapışmasını önler */
+    .nav-links.active { display: flex; }
+    .nav-links li { margin-left: 0; }
+
+    .hero, .services-section, .universities, .calculator-section, .contact-section, .main-footer {
+        padding: 50px 5% !important;
     }
-}
-/* ==========================================
-   19. NAV LOGO DÜZENLEMESİ (BOYUT AYARI)
-   ========================================== */
+    .hero h1 { font-size: 28px; }
+    .hero p { font-size: 16px; }
 
-/* Logonun etrafındaki link alanının daralmasını veya esnemesini engeller */
-.logo-container {
-    display: flex !important;
-    align-items: center !important;
-    text-decoration: none !important;
-    flex-shrink: 0 !important; /* Logonun ezilip küçülmesini kesin olarak önler */
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-/* LOGO BOYUTUNU BURADAN AYARLAYABİLİRSİNİZ */
-.logo-container .site-logo {
-    height: 55px !important;  /* Logonun dikey yüksekliği (Büyütmek için 65px veya 70px yapabilirsiniz) */
-    width: auto !important;   /* Logonun oranının bozulmasını önler */
-    max-height: 100% !important;
-    object-fit: contain !important;
-    display: block !important;
-}
-
-/* Mobil Ekranlar İçin Boyut Ayarı */
-@media (max-width: 768px) {
-    .logo-container .site-logo {
-        height: 40px !important; /* Telefon ekranlarında menüye sığması için dikey boyutu */
+    .service-card, .service-box {
+        flex: 0 0 100% !important; /* Tek sütun düzeni */
+        width: 100% !important;
     }
-}
-/* ==========================================
-   20. LOGO VE MENÜ ALANI ALAN GENİŞLETME
-   ========================================== */
 
-/* Navigasyon barının dikey alanını logoya göre esnetir */
-.navbar {
-    min-height: 80px !important; /* Barın yüksekliğini logonun sığabileceği seviyeye çeker */
-    padding: 10px 40px !important; /* Üst ve alttan pay bırakarak alanı genişletir */
-    display: flex !important;
-    align-items: center !important;
-}
-
-/* Logonun etrafındaki koruyucu bağımsız alanı büyütür */
-.logo-container {
-    height: 65px !important; /* Alan sınırını 65 piksele yükseltir */
-    display: flex !important;
-    align-items: center !important;
-}
-
-/* Logonun kendisini kesin olarak büyüklüğe zorlar */
-.logo-container .site-logo {
-    height: 100% !important; /* Yukarıda verilen 65px yüksekliğin tamamını kaplar */
-    width: auto !important;
-    max-height: 65px !important;
-    object-fit: contain !important;
-}
-
-/* Mobil Ekranlar İçin Dengeli Küçültme */
-@media (max-width: 768px) {
-    .navbar {
-        min-height: 60px !important;
-        padding: 10px 20px !important;
-    }
-    .logo-container {
-        height: 45px !important;
-    }
-    .logo-container .site-logo {
-        max-height: 45px !important;
-    }
-}
-/* Tüm sitenin sağa sola kaymasını kökten engeller */
-html, body {
-    width: 100% !important;
-    overflow-x: hidden !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-/* ==========================================
-   21. SABİT (STICKY) MENÜ DÜZENLEMESİ
-   ========================================== */
-
-/* Menü barını sayfanın üstüne sabitler */
-.navbar {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    z-index: 1000 !important; /* Diğer tüm elemanların ve kartların üstünde kalması için */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important; /* Altından geçen elemanlarla karışmaması için hafif gölge */
-}
-
-/* Menü sabitlendiğinde arkasında kalan ilk bölümün (hero/ana görsel alanı) 
-   menünün altında ezilmesini engellemek için üst boşluk ekler */
-body {
-    padding-top: 80px !important; /* Navbar'ın yüksekliği kadar bir boşluk bırakır */
-}
-
-/* Mobil ekranlar için üst boşluk ayarı */
-@media (max-width: 768px) {
-    body {
-        padding-top: 60px !important; /* Mobilde navbar daraldığı için boşluğu azaltır */
-    }
-}
+    .slider-container { padding: 0 15px !important; }
+    .
