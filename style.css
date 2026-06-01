@@ -851,4 +851,61 @@ body:has(#uniModal.open) #backtotop, #uniModal.open ~ #backtotop {
     }
 
     .slider-container { padding: 0 15px !important; }
-    .
+    
+    /* Mobil Slider İçin Ana Taşıyıcı Düzenlemesi */
+    .uni-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important; /* Kartların ekrana tam oturmasını sağlar */
+        gap: 15px !important;
+        padding: 15px 4% !important; /* Dengeli sağ-sol taşma payı */
+        width: 100% !important;
+        box-sizing: border-box !important;
+        -webkit-overflow-scrolling: touch; /* iOS için akıcı kaydırma */
+    }
+
+    /* Her Seferinde Ekranda Tam Genişlikte Tek Kart Gösteren Kural */
+    .uni-card {
+        flex: 0 0 92% !important; /* Ekranın %92'sini kaplayarak tekli düzen sunar */
+        width: 92% !important;
+        max-width: 92% !important;
+        min-width: 92% !important;
+        scroll-snap-align: center !important; /* Kaydırıldığında kartı ekrana ortalar */
+        margin-bottom: 0 !important;
+    }
+
+    .uni-img {
+        height: 200px !important;
+    }
+
+    .uni-info h3 {
+        font-size: 20px !important;
+        line-height: 1.4 !important;
+        white-space: normal !important;
+    }
+
+    .uni-desc {
+        min-height: auto !important;
+    }
+
+    .slide-btn { display: none !important; } /* Mobilde oklar kalkar, kaydırma elle yapılır */
+
+    .calc-container, .footer-container { flex-direction: column; padding: 25px; gap: 25px; }
+    .footer-container { text-align: center; gap: 30px; }
+    .result-value { font-size: 42px; }
+    .form-container { padding: 25px; }
+    .form-grid { grid-template-columns: 1fr; }
+
+    .modal-content { padding: 20px; max-height: 90vh; overflow-y: auto; }
+    .modal-slider { height: 200px; }
+}
+
+/* ÇOK KÜÇÜK MOBİL EKRANLAR (Maksimum 480px) */
+@media screen and (max-width: 480px) {
+    .hero h1 { font-size: 24px; }
+    .nav-links { font-size: 14px; }
+    .btn-main, .btn-nav { padding: 10px 15px; font-size: 14px; }
+    .modal-stats { flex-direction: column; gap: 10px; }
+}
