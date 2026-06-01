@@ -311,6 +311,17 @@ if (emailInput) emailInput.addEventListener('input', checkEmailMatch);
 // 3. Formun Gönderilme Anı Kontrolü
 if (evaluationForm) {
     evaluationForm.addEventListener('submit', function(e) {
+        
+        // --- [EN KRİTİK ADIM]: TARAYICI ZORUNLULUK KONTROLÜ ---
+        // Eğer HTML'de 'required' olan herhangi bir alan (İsim, Seviye vb.) boşsa,
+        // tarayıcının kendi uyarı balonunu tetikler ve JavaScript'in formu göndermesini engeller.
+        if (!evaluationForm.checkValidity()) {
+            // Tarayıcı kendi hata mesajlarını (Lütfen bu alanı doldurun vb.) göstersin diye 
+            // e.preventDefault() yapmıyoruz veya return ile burada kesiyoruz.
+            return; 
+        }
+
+        // Eğer tarayıcı kontrolleri başarılıysa sayfa yenilenmesini durdur ve özel kontrollere geç
         e.preventDefault(); 
 
         if (!emailInput) {
@@ -319,6 +330,17 @@ if (evaluationForm) {
         }
 
         const emailValue = emailInput.value.trim().toLowerCase();
+        const confirmEmailValue = emailConfirmInput ? emailConfirmInput.value.trim().toLowerCase() : '';
+
+        // İkinci e-posta alanı görünür durumdayken boş bırakıldıysa engelle
+        if (emailConfirmGroup && emailConfirmGroup.style.display !== 'none' && !confirmEmailValue) {
+            if (emailConfirmInput) emailConfirmInput.classList.add('error');
+            alert('Lütfen e-posta adresinizi doğrulamak için tekrar giriniz.');
+            if (emailConfirmInput) emailConfirmInput.focus();
+            return;
+        }
+
+        // --- MEVCUT SOĞUMA SÜRESİ (COOLDOWN) KONTROLÜ ---
         const lastSubmitTime = localStorage.getItem(`submit_time_${emailValue}`);
         const currentTime = Date.now();
         const cooldownPeriod = 10 * 60 * 1000;
@@ -333,19 +355,14 @@ if (evaluationForm) {
         }
 
         // E-posta uyuşmazlık kontrolü
-        if (emailConfirmInput) {
-            const confirmEmailValue = emailConfirmInput.value.trim().toLowerCase();
-            if (emailValue !== confirmEmailValue) {
-                emailConfirmInput.classList.add('error');
-                alert('Girdiğiniz e-posta adresleri uyuşmuyor. Lütfen kontrol edin.');
-                emailConfirmInput.focus();
-                return;
-            }
+        if (emailValue !== confirmEmailValue) {
+            if (emailConfirmInput) emailConfirmInput.classList.add('error');
+            alert('Girdiğiniz e-posta adresleri uyuşmuyor. Lütfen kontrol edin.');
+            if (emailConfirmInput) emailConfirmInput.focus();
+            return;
         }
 
-        // --- YENİ: NOT ORTALAMASI VE TELEFON KONTROLLERİ ---
-        
-        // 1. Lise Notu Kontrolü (0 - 100 arası)
+        // --- SAYISAL ARALIK VE TELEFON KONTROLLERİ ---
         const liseGradeInput = document.getElementById('liseGrade');
         if (liseGradeInput) {
             const liseGrade = parseFloat(liseGradeInput.value);
@@ -357,7 +374,6 @@ if (evaluationForm) {
             }
         }
 
-        // 2. Üniversite Notu Kontrolü (Sadece alan görünür durumdaysa ve 0 - 4 arası değilse)
         const uniGradeInput = document.getElementById('uniGrade');
         const uniGradeGroup = document.getElementById('uniGradeGroup');
         if (uniGradeInput && uniGradeGroup && uniGradeGroup.style.display !== 'none') {
@@ -370,7 +386,6 @@ if (evaluationForm) {
             }
         }
 
-        // 3. Telefon Numarası Uzunluk Kontrolü (Boş veya eksik numara girişini önlemek için)
         const phoneInput = document.getElementById('phone');
         if (phoneInput) {
             const phoneValue = phoneInput.value.trim();
@@ -381,9 +396,8 @@ if (evaluationForm) {
                 return;
             }
         }
-        // ---------------------------------------------------
 
-        // Tüm kontroller başarıyla geçildiyse formu gönderir
+        // Tüm aşamalar geçildiyse formu gönder
         const formData = new FormData(evaluationForm);
 
         fetch('https://api.web3forms.com/submit', {
@@ -406,6 +420,7 @@ if (evaluationForm) {
             alert("Bağlantı hatası oluştu.");
         });
     });
+
     // Hata çerçevelerini anlık temizleme
     evaluationForm.querySelectorAll('[required]').forEach(input => {
         input.addEventListener('input', () => { if (input.value.trim()) input.classList.remove('error'); });
