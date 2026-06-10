@@ -528,6 +528,46 @@ h1, h2, h3, h4 {
     font-size: 15px;
     line-height: 1.6;
 }
+/* KVKK Kutusu Tasarımı */
+.kvkk-group {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    background-color: #F3F4F6; /* Form arka planından hafifçe ayırır */
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px dashed #D1D5DB; /* Dikkat çekmesi için kesik çizgili kenarlık */
+}
+
+.kvkk-label {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 12px;
+    font-size: 13px !important;
+    font-weight: normal !important;
+    color: #4B5563 !important;
+    cursor: pointer;
+    line-height: 1.5;
+    margin-bottom: 0 !important;
+}
+
+.kvkk-label input[type="checkbox"] {
+    width: 20px !important;
+    height: 20px !important;
+    margin-top: 2px;
+    cursor: pointer;
+    flex-shrink: 0; /* Mobilde yazılar uzasa da kutuyu ezmez */
+}
+
+.kvkk-label a {
+    color: #1A2B4C;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.kvkk-label a:hover {
+    color: #E5A93C;
+}
 
 /* ==========================================
    8. DETAY AÇILIR PENCERE (MODAL SİSTEMİ)
