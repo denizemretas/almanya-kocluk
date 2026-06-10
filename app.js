@@ -318,16 +318,35 @@ if (evaluationForm) {
 
         // Sadece ekranda GÖRÜNÜR olan zorunlu alanların (İsim, Seviye vb.) doluluğunu kontrol eder
         // Gizli olan alanlar boş olsa bile formu kilitlemez
+        // Sadece ekranda GÖRÜNÜR olan zorunlu alanların (İsim, Seviye, KVKK vb.) doluluğunu kontrol eder
         let isFormValid = true;
         const requiredInputs = evaluationForm.querySelectorAll('[required]');
         
         requiredInputs.forEach(input => {
-            // Eğer alan görünür durumdaysa ve içi boşsa
-            if (input.offsetParent !== null && !input.value.trim()) {
-                input.classList.add('error');
-                isFormValid = false;
+            // Eğer alan ekranda görünür durumdaysa
+            if (input.offsetParent !== null) {
+                let isInvalid = false;
+        
+                // Eleman bir onay kutusu (checkbox) ise işaretli olup olmadığına bak
+                if (input.type === 'checkbox') {
+                    isInvalid = !input.checked;
+                } else {
+                    // Normal metin veya seçim alanı ise boş olup olmadığına bak
+                    isInvalid = !input.value.trim();
+                }
+        
+                if (isInvalid) {
+                    input.classList.add('error');
+                    isFormValid = false;
+                }
             }
         });
+        
+        // Eğer görünür zorunlu alanlardan biri bile kurala uymuyorsa işlemi kes, uyarı ver
+        if (!isFormValid) {
+            alert('Lütfen zorunlu alanları doldurunuz ve KVKK onay kutusunu işaretleyiniz.');
+            return;
+        }
 
         // Eğer görünür zorunlu alanlardan biri bile boşsa işlemi burada kes, alert ver
         if (!isFormValid) {
