@@ -565,3 +565,36 @@ function slideGrid(direction) {
         behavior: 'smooth'
     });
 }
+// ==========================================
+// KVKK MODAL KONTROL MEKANİZMASI
+// ==========================================
+const kvkkLink = document.getElementById('kvkkLink');
+const kvkkModal = document.getElementById('kvkkModal');
+const closeKvkk = document.getElementById('closeKvkk');
+const btnConfirmKvkk = document.getElementById('btnConfirmKvkk');
+
+// Modalı Açma Fonksiyonu
+if (kvkkLink && kvkkModal) {
+    kvkkLink.addEventListener('click', function(e) {
+        e.preventDefault(); // Sayfanın yukarı kaymasını veya yönlenmesini engeller
+        kvkkModal.classList.add('open');
+    });
+}
+
+// Modalı Kapatma Fonksiyonu
+function handleCloseKvkk() {
+    if (kvkkModal) {
+        kvkkModal.classList.remove('open');
+    }
+}
+
+// Kapatma tetikleyicileri
+if (closeKvkk) closeKvkk.addEventListener('click', handleCloseKvkk);
+if (btnConfirmKvkk) btnConfirmKvkk.addEventListener('click', handleCloseKvkk);
+
+// Kullanıcı açılır pencerenin dışındaki boşluğa tıklarsa da pencereyi kapat
+window.addEventListener('click', function(e) {
+    if (e.target === kvkkModal) {
+        handleCloseKvkk();
+    }
+});
