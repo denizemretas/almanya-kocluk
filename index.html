@@ -353,7 +353,7 @@
                     <label class="kvkk-label" for="kvkkCheck">
                         <input type="checkbox" id="kvkkCheck" name="kvkk_approval" required>
                         <span>
-                            <a href="kvkk-metni.pdf" target="_blank" id="kvkkLink">KVKK Aydınlatma Metni</a>'ni okudum, anladım ve kişisel verilerimin işlenmesini onaylıyorum. *
+                            <a href="#" id="kvkkLink">KVKK Aydınlatma Metni</a>
                         </span>
                     </label>
                 </div>
@@ -437,6 +437,44 @@
 
     <button id="backtotop" title="Yukarı Çık">&#8593;</button>
     <script src="app.js"></script>
+<div id="kvkkModal" class="modal">
+    <div class="modal-content" style="max-width: 700px; text-align: left;">
+        <span class="close-btn" id="closeKvkk">&times;</span>
+        
+        <h2 style="color: #1A2B4C; margin-bottom: 5px; font-size: 22px;">KVKK Aydınlatma Metni</h2>
+        <p style="font-size: 13px; color: #888; margin-bottom: 15px;">DerDieDas Koçluk</p>
+        <hr>
+        
+        <div style="max-height: 50vh; overflow-y: auto; padding-right: 10px; font-size: 14px; line-height: 1.6; color: #4A4A4A;">
+            <p><strong>Veri Sorumlusu:</strong>Sezgim Danışmanlık<br>
+            <strong>Adres:</strong>Konak Mah. Biletçi SK. No:3, 16265 Nilüfer, Bursa<br>
+            <strong>İletişim:</strong>+90 536 572 79 49, info@derdiedaskocluk.com </p><br>
+
+            <p>DerDieDas Koçluk olarak, web sitemiz üzerinden bizimle paylaştığınız kişisel verilerinizin güvenliğine ve hukuka uygun olarak işlenmesine büyük önem veriyoruz. Bu metin, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) uyarınca sizleri bilgilendirmek amacıyla hazırlanmıştır.</p><br>
+
+            <h4>1. Kişisel Verilerin İşlenme Amacı</h4>
+            <p>Web sitemizde yer alan ön değerlendirme formu aracılığıyla toplanan kişisel verileriniz; eğitim durumunuzun ve Almanca seviyenizin değerlendirilmesi, size uygun akademik/eğitim danışmanlık süreçlerinin planlanması ve sizinle iletişime geçilmesi amaçlarıyla işlenmektedir.</p><br>
+
+            <h4>2. İşlenen Kişisel Veri Kategorileri</h4>
+            <p>Form kapsamında şu kategorilerdeki verileriniz işlenmektedir:<br>
+            • <strong>Kimlik Bilgisi:</strong> Adınız ve soyadınız.<br>
+            • <strong>İletişim Bilgisi:</strong> E-posta adresiniz ve telefon numaranız.<br>
+            • <strong>Eğitim Bilgisi:</strong> Lise not ortalamanız, üniversite not ortalamanız ve Almanca dil seviyeniz.</p><br>
+
+            <h4>3. Kişisel Verilerin Aktarılması</h4>
+            <p>Toplanan kişisel verileriniz, ticari amaçlarla asla üçüncü taraflarla paylaşılmaz. Ancak, form gönderme altyapısı olarak kullanılan teknik servis sağlayıcısının (Web3Forms) sunucularının yurt dışındaki güvenli merkezlerinde bulunması sebebiyle, formun iletilmesi esnasında teknik altyapı gereksinimleri doğrultusunda yurt dışına aktarılmaktadır.</p><br>
+
+            <h4>4. Toplama Yöntemi ve Hukuki Sebep</h4>
+            <p>Kişisel verileriniz; web sitemizdeki başvuru formunu kendi isteğinizle doldurmanız suretiyle tamamen elektronik ortamda toplanmaktadır. Bu veriler, KVKK m.5/1 kapsamında "açık rızanızın bulunması" ve m.5/2-f uyarınca "ilgili kişinin temel hak ve özgürlüklerine zarar vermemek kaydıyla, veri sorumlusunun meşru menfaatleri için veri işlenmesinin zorunlu olması" hukuki sebeplerine dayanarak işlenmektedir.</p><br>
+
+            <h4>5. İlgili Kişinin Hakları</h4>
+            <p>KVKK’nın 11. maddesi uyarınca; verilerinizin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme, silinmesini veya düzeltilmesini isteme ve işlenmesine itiraz etme haklarına sahipsiniz. Kanun kapsamındaki tüm taleplerinizi <strong>info@derdiedaskocluk.com</strong> e-posta adresi üzerinden tarafımıza yazılı olarak iletebilirsiniz.</p>
+        </div>
+        
+        <hr style="margin-top: 20px; margin-bottom: 15px;">
+        <button class="btn-close-modal" id="btnConfirmKvkk" style="background-color: #1A2B4C; color: white;">Anladım, Kapat</button>
+    </div>
+</div>
 </body>
 </html>
 
