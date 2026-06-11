@@ -525,8 +525,8 @@ if (calcBtn) {
 
 // Koşullu Görünürlük Düzenlemesi
 const eduStatusSelect = document.getElementById('eduStatus');
-const uniGradeGroup = document.getElementById('uniGradeGroup');
-const uniGradeInput = document.getElementById('uniGrade');
+uniGradeGroup = document.getElementById('uniGradeGroup');
+uniGradeInput = document.getElementById('uniGrade');
 
 if (eduStatusSelect && uniGradeGroup && uniGradeInput) {
     eduStatusSelect.addEventListener('change', function() {
