@@ -428,29 +428,43 @@ if (evaluationForm) {
         }
 
         // Tüm aşamalar geçildiyse formu gönder
-        const formData = new FormData(evaluationForm);
+        // --- TÜRKÇE KARAKTER TEMİZLEME FONKSİYONU ---
+        function turkceyiIngilizceyeCevir(metin) {
+            if (typeof metin !== 'string') return metin;
+            
+            const karakterHaritasi = {
+                'ç': 'c', 'Ç': 'C',
+                'ğ': 'g', 'Ğ': 'G',
+                'ı': 'i', 'I': 'I', 'İ': 'I',
+                'ö': 'o', 'Ö': 'O',
+                'ş': 's', 'Ş': 'S',
+                'ü': 'u', 'Ü': 'U'
+            };
+            
+            return metin.replace(/[çğıöşüÇĞIİÖŞÜ]/g, function(harf) {
+                return karakterHaritasi[harf] || harf;
+            });
+        }
 
+        // Mevcut form verilerini oku ve içindeki Türkçe karakterleri dönüştür
+        const originalFormData = new FormData(evaluationForm);
+        const formData = new FormData();
+
+        for (let [key, value] of originalFormData.entries()) {
+            if (typeof value === 'string') {
+                // Form kutularına yazılan veya seçilen metinleri temizle
+                formData.append(key, turkceyiIngilizceyeCevir(value));
+            } else {
+                formData.append(key, value);
+            }
+        }
+        // --------------------------------------------
+
+        // fetch fonksiyonunuz bu satırdan sonra aynı şekilde devam edecek
         fetch('https://api.web3forms.com/submit', {
             method: 'POST',
-            body: formData
+            body: formData // Filtrelenmiş yeni veriler gönderiliyor
         })
-        .then(async response => {
-            const result = await response.json();
-            if (response.ok && result.success) {
-                localStorage.setItem(`submit_time_${emailValue}`, Date.now());
-                evaluationForm.style.display = 'none';
-                const formSuccess = document.getElementById('formSuccess');
-                if (formSuccess) formSuccess.style.display = 'block';
-            } else {
-                alert("Form iletilemedi: " + (result.message || "Lütfen tekrar deneyin."));
-            }
-        })
-        .catch(error => {
-            console.error("Hata:", error);
-            alert("Bağlantı hatası oluştu.");
-        });
-    });
-}
 
 // ==========================================
 // 4. NOT HESAPLAMA MANTIĞI (BAVYERA FORMÜLÜ)
