@@ -6,7 +6,7 @@
 // ==========================================
 const uniData = {
     tum: {
-        title: "Münih Teknik Üniversitesi (TUM)",
+        title: "Münih Teknik Üniversitesi",
         location: "Münih, Bavyera",
         desc: "Almanya'nın en prestijli teknik üniversitesidir. Nobel ödüllü birçok bilim insanı yetiştirmiştir. Mühendislik fakülteleri dünya çapında lider konumdadır ve sanayi devleri ile doğrudan ortak projeler yürütmektedir.",
         year: "1868",
@@ -16,7 +16,7 @@ const uniData = {
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.115858055416!2d11.565434315642302!3d48.1496181792444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e75ebe77e114f%3A0x6a0c0cbdf5780d3b!2sTechnical%20University%20of%20Munich!5e0!3m2!1str!2sde!4v1650000000000!5m2!1str!2sde"
     },
     rwth: {
-        title: "RWTH Aachen Üniversitesi",
+        title: "RWTH Aachen",
         location: "Aachen, Kuzey Ren-Vestfalya",
         desc: "Avrupa'nın en büyük teknik üniversitelerinden biridir. Özellikle Makine Mühendisliği ve Bilgisayar Bilimleri alanlarında Almanya'nın bir numarası olarak kabul edilir. Aachen şehri tamamen bir öğrenci kentine dönüşmüştür.",
         year: "1870",
@@ -46,7 +46,7 @@ const uniData = {
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2630.22235287411!2d9.172944315688534!3d48.77518067934526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799db4ca583cd1b%3A0x42f0e0d50044000!2sUniversity%20of%20Stuttgart!5e0!3m2!1str!2sde!4v1650000000009!5m2!1str!2sde"
     },
     berlin: {
-        title: "Berlin Teknik Üniversitesi (TU Berlin)",
+        title: "TU Berlin",
         location: "Berlin",
         desc: "Almanya'nın en büyük ve prestijli teknik üniversitelerinden biridir. Mühendislik ve bilgisayar bilimleri alanlarında dünya çapında bir üne sahiptir.",
         year: "1879",
@@ -96,7 +96,7 @@ const uniData = {
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2435.115858055416!2d9.721434315642302!3d52.3826181792444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b074a3ca043a13%3A0x633513a960df768f!2sLeibniz%20University%20Hannover!5e0!3m2!1str!2sde!4v1650000000014!5m2!1str!2sde"
     },
     kit: {
-        title: "Karlsruhe Teknoloji Enstitüsü (KIT)",
+        title: "Karlsruhe Teknoloji Enstitüsü",
         location: "Karlsruhe, Baden-Württemberg",
         desc: "Ulusal bir araştırma merkezi ile üniversitenin birleşimiyle kurulmuştur. Bilgisayar mühendisliği ve enerji teknolojilerinde Avrupa'nın en saygın kurumlarındandır.",
         year: "2009",
@@ -106,7 +106,7 @@ const uniData = {
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2621.115858055416!2d8.411434315642302!3d49.0116181792444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479979038e2d4cf7%3A0x42f0e0d50044000!2sKarlsruhe%20Institute%20of%20Technology!5e0!3m2!1str!2sde!4v1650000000015!5m2!1str!2sde"
     },
     "tu-clausthal": {
-        title: "Clausthal Teknik Üniversitesi",
+        title: "TU Clausthal",
         location: "Clausthal-Zellerfeld, Aşağı Saksonya",
         desc: "Mühendislik, malzeme bilimi ve enerji araştırmalarında güçlü köklere sahiptir. Uluslararası öğrencilere sunduğu avantajlı şartlı kabul olanakları ve anlaşmalı olduğu yoğun Almanca hazırlık kursları ile bilinir.",
         year: "1775",
